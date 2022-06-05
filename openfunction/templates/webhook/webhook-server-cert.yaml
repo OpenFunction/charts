@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: webhook-server-cert
+  labels:
+  {{- include "openfunction.labels" . | nindent 4 }}
+data:
+  tls.crt: {{ required "webhookServerCert.tlsCrt is required" .Values.webhookServerCert.tlsCrt | quote }}
+  tls.key: {{ required "webhookServerCert.tlsKey is required" .Values.webhookServerCert.tlsKey | quote }}
+type: kubernetes.io/tls
