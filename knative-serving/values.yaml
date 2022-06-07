@@ -1,0 +1,220 @@
+ScaleKourierGateway:
+  kourierGateway:
+    image:
+      repository: docker.io/envoyproxy/envoy
+      tag: v1.17-latest
+activator:
+  activator:
+    image:
+      repository: gcr.io/knative-releases/knative.dev/serving/cmd/activator
+      tag:
+      digest: sha256:ca607f73e5daef7f3db0358e145220f8423e93c20ee7ea9f5595f13bd508289a
+    resources:
+      limits:
+        cpu: "1"
+        memory: 600Mi
+      requests:
+        cpu: 300m
+        memory: 60Mi
+activatorService:
+  ports:
+    - name: http-metrics
+      port: 9090
+      targetPort: 9090
+    - name: http-profiling
+      port: 8008
+      targetPort: 8008
+    - name: http
+      port: 80
+      targetPort: 8012
+    - name: http2
+      port: 81
+      targetPort: 8013
+  type: ClusterIP
+autoscaler:
+  autoscaler:
+    image:
+      repository: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler
+      tag:
+      digest: sha256:31aed8b5b241147585cb0e48366451a96354fc6036d6a5667997237c1d302d98
+    resources:
+      limits:
+        cpu: "1"
+        memory: 1000Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+  ports:
+    - name: http-metrics
+      port: 9090
+      targetPort: 9090
+    - name: http-profiling
+      port: 8008
+      targetPort: 8008
+    - name: http
+      port: 8080
+      targetPort: 8080
+  replicas: 1
+  type: ClusterIP
+configAutoscaler:
+configDefaults:
+configDeployment:
+  queueSidecarImage:
+    repository: gcr.io/knative-releases/knative.dev/serving/cmd/queue
+    tag:
+    digest: sha256:80dfb4568e08e43093f93b2cae9401f815efcb67ad8442d1f7f4c8a41e071fbe
+configDomain:
+configFeatures:
+configGc:
+configKourier:
+configLeaderElection:
+configLogging:
+configNetwork:
+configObservability:
+configTracing:
+controller:
+  controller:
+    image:
+      repository: gcr.io/knative-releases/knative.dev/serving/cmd/controller
+      tag:
+      digest: sha256:c5a77d5642065ff3452d9b043a7226b85bfc81dc068f8dded905abf88d917a4d
+    resources:
+      limits:
+        cpu: "1"
+        memory: 1000Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+  ports:
+    - name: http-metrics
+      port: 9090
+      targetPort: 9090
+    - name: http-profiling
+      port: 8008
+      targetPort: 8008
+  type: ClusterIP
+domainMapping:
+  domainMapping:
+    image:
+      repository: gcr.io/knative-releases/knative.dev/serving/cmd/domain-mapping
+      tag:
+      digest: sha256:6b5356cf3a2b64d52cbbf1bc0de376b816c4d3f610ccc8ff2dabf3d259c0996b
+    resources:
+      limits:
+        cpu: 300m
+        memory: 400Mi
+      requests:
+        cpu: 30m
+        memory: 40Mi
+domainmappingWebhook:
+  domainmappingWebhook:
+    image:
+      repository: gcr.io/knative-releases/knative.dev/serving/cmd/domain-mapping-webhook
+      tag:
+      digest: sha256:d0cc86f2002660c4804f6e0aed8218d39384c73a8b5006c9ac558becd8f48aa6
+    resources:
+      limits:
+        cpu: 500m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+  ports:
+    - name: http-metrics
+      port: 9090
+      targetPort: 9090
+    - name: http-profiling
+      port: 8008
+      targetPort: 8008
+    - name: https-webhook
+      port: 443
+      targetPort: 8443
+  type: ClusterIP
+kourier:
+  ports:
+    - name: http2
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8443
+  type: LoadBalancer
+kourierBootstrap:
+  envoyBootstrapYaml:
+    admin:
+      accessLogPath: /dev/stdout
+      address:
+        pipe:
+          path: /tmp/envoy.admin
+    dynamicResources:
+      adsConfig:
+        apiType: GRPC
+        rateLimitSettings: {}
+        transportApiVersion: V3
+      cdsConfig:
+        ads: {}
+        resourceApiVersion: V3
+      ldsConfig:
+        ads: {}
+        resourceApiVersion: V3
+    node:
+      cluster: kourier-knative
+      id: 3scale-kourier-gateway
+kourierInternal:
+  ports:
+    - name: http2
+      port: 80
+      protocol: TCP
+      targetPort: 8081
+  type: ClusterIP
+kubernetesClusterDomain: cluster.local
+netKourierController:
+  controller:
+    image:
+      repository: gcr.io/knative-releases/knative.dev/net-kourier/cmd/kourier
+      tag:
+      digest: sha256:cd70f2bb54f2575082e54b0df1b74908c3f4873ffc9750ca8da36d7b9bfe5b2d
+  ports:
+    - name: grpc-xds
+      port: 18000
+      protocol: TCP
+      targetPort: 18000
+  replicas: 1
+  type: ClusterIP
+defaultDomain:
+  job:
+    image:
+      repository: gcr.io/knative-releases/knative.dev/serving/cmd/default-domain
+      tag:
+      digest: sha256:4bd6f5a7748644e56bb266d5c10f442b2548b484b57059ee64ec2a793dd1b976
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+webhook:
+  ports:
+    - name: http-metrics
+      port: 9090
+      targetPort: 9090
+    - name: http-profiling
+      port: 8008
+      targetPort: 8008
+    - name: https-webhook
+      port: 443
+      targetPort: 8443
+  type: ClusterIP
+  webhook:
+    image:
+      repository: gcr.io/knative-releases/knative.dev/serving/cmd/webhook
+      tag:
+      digest: sha256:bd954ec8ced56e359bd4f60ee1886b20000df14126688c796383a3ae40cfffc0
+    resources:
+      limits:
+        cpu: 500m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi

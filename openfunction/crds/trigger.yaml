@@ -1,0 +1,163 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: triggers.events.openfunction.io
+spec:
+  group: events.openfunction.io
+  names:
+    kind: Trigger
+    listKind: TriggerList
+    plural: triggers
+    singular: trigger
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .spec.eventBus
+      name: EventBus
+      type: string
+    - jsonPath: .status.conditions[-1].type
+      name: Status
+      type: string
+    name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        properties:
+          apiVersion:
+            type: string
+          kind:
+            type: string
+          metadata:
+            type: object
+          spec:
+            properties:
+              eventBus:
+                type: string
+              inputs:
+                additionalProperties:
+                  properties:
+                    event:
+                      type: string
+                    eventSource:
+                      type: string
+                    namespace:
+                      type: string
+                  required:
+                  - event
+                  - eventSource
+                  type: object
+                type: object
+              logLevel:
+                type: string
+              subscribers:
+                items:
+                  properties:
+                    condition:
+                      type: string
+                    deadLetterSink:
+                      properties:
+                        ref:
+                          properties:
+                            apiVersion:
+                              type: string
+                            kind:
+                              type: string
+                            name:
+                              type: string
+                            namespace:
+                              type: string
+                          required:
+                          - apiVersion
+                          - kind
+                          - name
+                          type: object
+                        uri:
+                          type: string
+                      type: object
+                    deadLetterTopic:
+                      type: string
+                    sink:
+                      properties:
+                        ref:
+                          properties:
+                            apiVersion:
+                              type: string
+                            kind:
+                              type: string
+                            name:
+                              type: string
+                            namespace:
+                              type: string
+                          required:
+                          - apiVersion
+                          - kind
+                          - name
+                          type: object
+                        uri:
+                          type: string
+                      type: object
+                    topic:
+                      type: string
+                  required:
+                  - condition
+                  type: object
+                type: array
+            required:
+            - eventBus
+            - inputs
+            - subscribers
+            type: object
+          status:
+            properties:
+              conditions:
+                items:
+                  properties:
+                    message:
+                      type: string
+                    reason:
+                      enum:
+                      - EventSourceFunctionCreated
+                      - ErrorCreatingEventSource
+                      - ErrorCreatingEventSourceFunction
+                      - EventSourceIsReady
+                      - ErrorConfiguration
+                      - ErrorToFindExistEventBus
+                      - ErrorGenerateComponent
+                      - ErrorGenerateScaledObject
+                      - PendingCreation
+                      - ErrorToFindTriggerSubscribers
+                      - ErrorCreatingTrigger
+                      - TriggerIsReady
+                      - ErrorCreatingTriggerFunction
+                      - TriggerFunctionCreated
+                      type: string
+                    status:
+                      type: string
+                    timestamp:
+                      type: string
+                    type:
+                      enum:
+                      - Created
+                      - Error
+                      - Pending
+                      - Unknown
+                      - Terminating
+                      - Terminated
+                      - Ready
+                      type: string
+                  required:
+                  - status
+                  - type
+                  type: object
+                type: array
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
