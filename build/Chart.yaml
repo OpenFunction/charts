@@ -35,24 +35,24 @@ dependencies:
   - name: dapr
     version: 1.5.1
     repository: "file://dapr"
-    condition: dapr.enabled
+    condition: Dapr.enabled
   - name: knative-serving
     version: 0.6.0
     repository: "file://knative-serving"
-    condition: knativeServing.enabled
+    condition: KnativeServing.enabled
   - name: tekton-pipelines
     version: 0.6.0
     repository: "file://tekton-pipelines"
-    condition: shipwrightBuild.enabled
+    condition: TektonPipelines.enabled
   - name: shipwright-build
     version: 0.6.0
     repository: "file://shipwright-build"
-    condition: shipwrightBuild.enabled
+    condition: ShipwrightBuild.enabled
   - name: keda
     version: 2.4.0
     repository: "file://keda"
-    condition: keda.enabled, dapr.enabled
+    condition: Keda.enabled
   - name: ingress-nginx
     version: 4.0.6
     repository: "file://ingress-nginx"
-    condition: ingressNginx.enabled
+    condition: IngressNginx.enabled
