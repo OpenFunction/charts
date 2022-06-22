@@ -3,7 +3,7 @@ entries:
   knative-serving:
   - apiVersion: v2
     appVersion: 1.0.1
-    created: "2022-06-22T13:03:41.7717544+08:00"
+    created: "2022-06-22T14:49:01.6568761+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: 478c987ac80ee21e2a912d052e966f1c208c07825090db79a91be6442d344154
     keywords:
@@ -22,7 +22,7 @@ entries:
   openfunction:
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-06-22T13:03:41.7847054+08:00"
+    created: "2022-06-22T14:49:01.6699961+08:00"
     dependencies:
     - condition: Dapr.enabled
       name: dapr
@@ -49,7 +49,7 @@ entries:
       repository: file://ingress-nginx
       version: 4.0.6
     description: A Helm chart for OpenFunction on Kubernetes
-    digest: 49e33bfc254e305d5d23652aaef0810c314f800f94a1f5baa21866e8f2094b61
+    digest: a07e231d6979c7d1b3a1932d0f332865df93e9534f484b5f3d9435e9f6197d76
     keywords:
     - faas
     - Serverless
@@ -68,7 +68,7 @@ entries:
   shipwright-build:
   - apiVersion: v2
     appVersion: 0.6.1
-    created: "2022-06-22T13:03:41.7859362+08:00"
+    created: "2022-06-22T14:49:01.6713357+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: ed5b8a8c7cebda4cc310fbe3807481296d50323c977721ba96c3e88a023308c7
     keywords:
@@ -89,7 +89,7 @@ entries:
   tekton-pipelines:
   - apiVersion: v2
     appVersion: 0.30.0
-    created: "2022-06-22T13:03:41.7867005+08:00"
+    created: "2022-06-22T14:49:01.6724771+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
     digest: b3b16c8a2910b45dafa631cacef9766b114130699503eeb133d83f1d84566182
     keywords:
@@ -107,4 +107,4 @@ entries:
     urls:
     - https://openfunction.github.io/charts/tekton-pipelines-v0.30.0-v0.6.0.tgz
     version: 0.6.0
-generated: "2022-06-22T13:03:41.7689118+08:00"
+generated: "2022-06-22T14:49:01.6545307+08:00"
