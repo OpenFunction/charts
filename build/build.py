@@ -95,6 +95,7 @@ class Build(object):
                                     else:
                                         result += namespace_field
                             except IndexError:
+                                result += namespace_field
                                 print(f"IndexError {line}")
                             continue
                         if '{{ .Release.Namespace }}' in line:
