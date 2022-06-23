@@ -16,7 +16,8 @@ A Helm chart for OpenFunction on Kubernetes
 
 ## Requirements
 
-Kubernetes: `>=v1.20.0-0`
+- helm: `>=v3.6.3`
+- Kubernetes: `>=v1.20.0-0`
 
 | Repository | Name | Version | AppVersion |
 |------------|------|---------|------------|
