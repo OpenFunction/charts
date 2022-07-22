@@ -37,15 +37,15 @@ dependencies:
     repository: "file://dapr"
     condition: Dapr.enabled
   - name: knative-serving
-    version: 0.6.0
+    version: 1.0.1
     repository: "file://knative-serving"
     condition: KnativeServing.enabled
   - name: tekton-pipelines
-    version: 0.6.0
+    version: 0.30.0
     repository: "file://tekton-pipelines"
     condition: TektonPipelines.enabled
   - name: shipwright-build
-    version: 0.6.0
+    version: 0.6.1
     repository: "file://shipwright-build"
     condition: ShipwrightBuild.enabled
   - name: keda

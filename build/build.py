@@ -14,6 +14,7 @@ class Build(object):
         "tekton-pipelines": "tekton-pipelines",
         "shipwright-build": "shipwright-build"
     }
+    local_charts = {"knative-serving", "tekton-pipelines", "shipwright-build"}
 
     def __init__(self, major: int = 0, minor: int = 1, patch: int = 0, region_cn: bool = False):
         self.src_dir = os.path.join(self.root_dir, "openfunction")
@@ -32,6 +33,10 @@ class Build(object):
             os.makedirs(self.dis_dir)
         # subprocess.check_call(["cp", "-r", self.src_dir, self.dis_dir])
         shutil.copytree(self.src_dir, self.dis_dir, dirs_exist_ok=True)
+        for chart in self.local_charts:
+            src_dir = os.path.join(self.root_dir, chart)
+            dis_dir = os.path.join(self.charts_dir, chart)
+            shutil.copytree(src_dir, dis_dir, dirs_exist_ok=True)
         os.chdir(self.dis_dir)
 
     def pull(self):

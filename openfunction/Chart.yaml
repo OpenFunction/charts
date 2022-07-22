@@ -37,16 +37,16 @@ dependencies:
     repository: https://dapr.github.io/helm-charts/
     condition: Dapr.enabled
   - name: knative-serving
-    version: 0.6.0
-    repository: https://openfunction.github.io/charts/
+    version: 1.0.1
+    repository: "file://charts/knative-serving"
     condition: KnativeServing.enabled
   - name: tekton-pipelines
-    version: 0.6.0
-    repository: https://openfunction.github.io/charts/
+    version: 0.30.0
+    repository: "file://charts/tekton-pipelines"
     condition: TektonPipelines.enabled
   - name: shipwright-build
-    version: 0.6.0
-    repository: https://openfunction.github.io/charts/
+    version: 0.6.1
+    repository: "file://charts/shipwright-build"
     condition: ShipwrightBuild.enabled
   - name: keda
     version: 2.4.0
