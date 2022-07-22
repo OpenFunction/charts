@@ -3,9 +3,9 @@ entries:
   knative-serving:
   - apiVersion: v2
     appVersion: 1.0.1
-    created: "2022-06-23T12:51:32.4561742+08:00"
+    created: "2022-07-22T14:35:28.4868134+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
-    digest: 69376f8f949d9e357bfeb388504e8756857922a90c45c8a97d11bbe3a9c456e3
+    digest: c3c6dd47616c498ffe87d94812c35a6423ef974fa65daddc22d196986e15284a
     keywords:
     - Serverless
     - Kubernetes
@@ -17,12 +17,12 @@ entries:
     - https://github.com/knative/serving
     type: application
     urls:
-    - https://openfunction.github.io/charts/knative-serving-v1.0.1-v0.6.0.tgz
-    version: 0.6.0
+    - https://openfunction.github.io/charts/knative-serving-1.0.1.tgz
+    version: 1.0.1
   openfunction:
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-06-23T12:51:32.4696619+08:00"
+    created: "2022-07-22T14:35:28.5018927+08:00"
     dependencies:
     - condition: Dapr.enabled
       name: dapr
@@ -31,15 +31,15 @@ entries:
     - condition: KnativeServing.enabled
       name: knative-serving
       repository: file://knative-serving
-      version: 0.6.0
+      version: 1.0.1
     - condition: TektonPipelines.enabled
       name: tekton-pipelines
       repository: file://tekton-pipelines
-      version: 0.6.0
+      version: 0.30.0
     - condition: ShipwrightBuild.enabled
       name: shipwright-build
       repository: file://shipwright-build
-      version: 0.6.0
+      version: 0.6.1
     - condition: Keda.enabled
       name: keda
       repository: file://keda
@@ -49,7 +49,7 @@ entries:
       repository: file://ingress-nginx
       version: 4.0.6
     description: A Helm chart for OpenFunction on Kubernetes
-    digest: 0e7d4f4b70537eb50df6b856b5b76a3b3473c92240866ba12d0003035a617c94
+    digest: bb5316013ec4cdbb0e8460569f38aa5bf02643bdd9ba9f10a4925b71ac3b0a5c
     keywords:
     - faas
     - Serverless
@@ -68,9 +68,9 @@ entries:
   shipwright-build:
   - apiVersion: v2
     appVersion: 0.6.1
-    created: "2022-06-23T12:51:32.4707885+08:00"
+    created: "2022-07-22T14:35:28.50289+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
-    digest: ed5b8a8c7cebda4cc310fbe3807481296d50323c977721ba96c3e88a023308c7
+    digest: 366ca24ad2651910695ac50e165be4fa7c8c635ec2aec5f53a6baca17f3efed0
     keywords:
     - Continuous delivery
     - Continuous deployment
@@ -84,14 +84,14 @@ entries:
     - https://github.com/shipwright-io/build
     type: application
     urls:
-    - https://openfunction.github.io/charts/shipwright-build-v0.6.1-v0.6.0.tgz
-    version: 0.6.0
+    - https://openfunction.github.io/charts/shipwright-build-0.6.1.tgz
+    version: 0.6.1
   tekton-pipelines:
   - apiVersion: v2
     appVersion: 0.30.0
-    created: "2022-06-23T12:51:32.4717899+08:00"
+    created: "2022-07-22T14:35:28.5038928+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
-    digest: b3b16c8a2910b45dafa631cacef9766b114130699503eeb133d83f1d84566182
+    digest: 4939ec89841370813aa5c00cea5db82733470fb165326d2b75c3f9324d170bac
     keywords:
     - Continuous delivery
     - Continuous deployment
@@ -105,6 +105,6 @@ entries:
     - https://github.com/tektoncd/pipeline
     type: application
     urls:
-    - https://openfunction.github.io/charts/tekton-pipelines-v0.30.0-v0.6.0.tgz
-    version: 0.6.0
-generated: "2022-06-23T12:51:32.4540109+08:00"
+    - https://openfunction.github.io/charts/tekton-pipelines-0.30.0.tgz
+    version: 0.30.0
+generated: "2022-07-22T14:35:28.4846414+08:00"
