@@ -15,7 +15,6 @@ A Helm chart for OpenFunction on Kubernetes
 * <https://github.com/OpenFunction/OpenFunction>
 
 ## Requirements
-
 - helm: `>=v3.6.3`
 - Kubernetes: `>=v1.20.0-0`
 
@@ -24,9 +23,9 @@ A Helm chart for OpenFunction on Kubernetes
 | https://dapr.github.io/helm-charts/ | dapr | 1.5.1   | 1.5.1      |
 | https://kedacore.github.io/charts | keda | 2.4.0   | 2.4.0      |
 | https://kubernetes.github.io/ingress-nginx | ingress-nginx | 4.0.6   | 1.0.4      |
-| https://openfunction.github.io/charts/ | knative-serving | 0.6.0   | 1.0.1      |
-| https://openfunction.github.io/charts/ | shipwright-build | 0.6.0   | 0.6.1      |
-| https://openfunction.github.io/charts/ | tekton-pipelines | 0.6.0   | 0.30.0     |
+| https://openfunction.github.io/charts/ | knative-serving | 1.0.1   | 1.0.1      |
+| https://openfunction.github.io/charts/ | shipwright-build | 0.6.1   | 0.6.1      |
+| https://openfunction.github.io/charts/ | tekton-pipelines | 0.30.0  | 0.30.0     |
 
 ## Install the Chart
 
