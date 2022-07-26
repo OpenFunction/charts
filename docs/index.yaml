@@ -2,8 +2,27 @@ apiVersion: v1
 entries:
   knative-serving:
   - apiVersion: v2
+    appVersion: 1.3.2
+    created: "2022-07-26T10:54:07.9563604+08:00"
+    description: A Helm chart for Knative Serving on Kubernetes
+    digest: fed612a11e5a34e40d6356cd0d9bdb3423779442fbce2f99bf1ae51bbddb80d4
+    keywords:
+    - Serverless
+    - Kubernetes
+    kubeVersion: '>=v1.21.0-0'
+    maintainers:
+    - email: wangyifei@kubesphere.io
+      name: wangyifei
+    name: knative-serving
+    sources:
+    - https://github.com/knative/serving
+    type: application
+    urls:
+    - https://openfunction.github.io/charts/knative-serving-1.3.2.tgz
+    version: 1.3.2
+  - apiVersion: v2
     appVersion: 1.0.1
-    created: "2022-07-22T14:35:28.4868134+08:00"
+    created: "2022-07-26T10:54:07.9476478+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: c3c6dd47616c498ffe87d94812c35a6423ef974fa65daddc22d196986e15284a
     keywords:
@@ -22,7 +41,7 @@ entries:
   openfunction:
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-07-22T14:35:28.5018927+08:00"
+    created: "2022-07-26T10:54:07.9738831+08:00"
     dependencies:
     - condition: Dapr.enabled
       name: dapr
@@ -67,8 +86,29 @@ entries:
     version: 0.1.0
   shipwright-build:
   - apiVersion: v2
+    appVersion: 0.10.0
+    created: "2022-07-26T10:54:07.9769488+08:00"
+    description: A Helm chart for Shipwright Build on Kubernetes
+    digest: 76717e887a4d65a53f21034f38e337eef5ea34c061c8abf206a21fa5148dca1f
+    keywords:
+    - Continuous delivery
+    - Continuous deployment
+    - Devops
+    - Kubernetes
+    kubeVersion: '>=v1.21.0-0'
+    maintainers:
+    - email: wangyifei@kubesphere.io
+      name: wangyifei
+    name: shipwright-build
+    sources:
+    - https://github.com/shipwright-io/build
+    type: application
+    urls:
+    - https://openfunction.github.io/charts/shipwright-build-0.10.0.tgz
+    version: 0.10.0
+  - apiVersion: v2
     appVersion: 0.6.1
-    created: "2022-07-22T14:35:28.50289+08:00"
+    created: "2022-07-26T10:54:07.9779444+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: 366ca24ad2651910695ac50e165be4fa7c8c635ec2aec5f53a6baca17f3efed0
     keywords:
@@ -88,8 +128,29 @@ entries:
     version: 0.6.1
   tekton-pipelines:
   - apiVersion: v2
+    appVersion: 0.37.2
+    created: "2022-07-26T10:54:07.9801488+08:00"
+    description: A Helm chart for Tekton Pipelines on Kubernetes
+    digest: c7054531dae8ff9e8c5542b8967060d452dae60e5c866efb1b0c95e42f800555
+    keywords:
+    - Continuous delivery
+    - Continuous deployment
+    - Devops
+    - Kubernetes
+    kubeVersion: '>=v1.21.0-0'
+    maintainers:
+    - email: wangyifei@kubesphere.io
+      name: wangyifei
+    name: tekton-pipelines
+    sources:
+    - https://github.com/tektoncd/pipeline
+    type: application
+    urls:
+    - https://openfunction.github.io/charts/tekton-pipelines-0.37.2.tgz
+    version: 0.37.2
+  - apiVersion: v2
     appVersion: 0.30.0
-    created: "2022-07-22T14:35:28.5038928+08:00"
+    created: "2022-07-26T10:54:07.9791076+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
     digest: 4939ec89841370813aa5c00cea5db82733470fb165326d2b75c3f9324d170bac
     keywords:
@@ -107,4 +168,4 @@ entries:
     urls:
     - https://openfunction.github.io/charts/tekton-pipelines-0.30.0.tgz
     version: 0.30.0
-generated: "2022-07-22T14:35:28.4846414+08:00"
+generated: "2022-07-26T10:54:07.9393861+08:00"

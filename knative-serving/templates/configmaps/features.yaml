@@ -3,12 +3,13 @@ kind: ConfigMap
 metadata:
   name: config-features
   labels:
-    app.kubernetes.io/part-of: knative-serving
-    app.kubernetes.io/version: 1.0.1
-    serving.knative.dev/release: v1.0.1
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/name: knative-serving
+    app.kubernetes.io/version: 1.3.2
+    serving.knative.dev/release: v1.3.2
   {{- include "knative-serving.labels" . | nindent 4 }}
   annotations:
-    knative.dev/example-checksum: 2897f625
+    knative.dev/example-checksum: d9e300ba
 data:
   kubernetes.podspec-fieldref: "enabled"
   _example: |-
@@ -135,3 +136,13 @@ data:
     # 1. Enabled: enabling init containers support
     # 2. Disabled: disabling init containers support
     kubernetes.podspec-init-containers: "disabled"
+
+    # Controls whether persistent volume claim support is enabled or not.
+    # 1. Enabled: enabling persistent volume claim support
+    # 2. Disabled: disabling persistent volume claim support
+    kubernetes.podspec-persistent-volume-claim: "disabled"
+
+    # Controls whether write access for persistent volumes is enabled or not.
+    # 1. Enabled: enabling write access for persistent volumes
+    # 2. Disabled: disabling write access for persistent volumes
+    kubernetes.podspec-persistent-volume-write: "disabled"

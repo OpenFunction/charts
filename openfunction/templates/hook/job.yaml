@@ -1,0 +1,49 @@
+{{- if .Values.Contour.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: delete-gateway
+  namespace: openfunction
+  annotations:
+    "helm.sh/hook": pre-delete
+    "helm.sh/hook-weight": "0"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: hyperkube
+        image: openfunction/hyperkube:v1.18.0
+        command:
+        - kubectl
+        - delete
+        - gateway
+        - openfunction
+        - {{ .Release.Namespace }}
+      restartPolicy: Never
+      serviceAccountName: {{ include "openfunction.fullname" . }}-controller-manager
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: delete-ns
+  namespace: openfunction
+  annotations:
+    "helm.sh/hook": post-delete
+    "helm.sh/hook-weight": "5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: hyperkube
+        image: openfunction/hyperkube:v1.18.0
+        command:
+        - kubectl
+        - delete
+        - ns
+        - {{ .Values.contour.namespaceOverride }}
+        - --wait=false
+      restartPolicy: Never
+      serviceAccountName: ns-edit
+{{- end }}

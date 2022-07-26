@@ -3,20 +3,20 @@ kind: HorizontalPodAutoscaler
 metadata:
   name: activator
   labels:
-    app.kubernetes.io/name: activator
-    app.kubernetes.io/part-of: knative-serving
-    app.kubernetes.io/version: 1.0.1
-    serving.knative.dev/release: v1.0.1
+    app.kubernetes.io/component: activator
+    app.kubernetes.io/name: knative-serving
+    app.kubernetes.io/version: 1.3.2
+    serving.knative.dev/release: v1.3.2
   {{- include "knative-serving.labels" . | nindent 4 }}
 spec:
   maxReplicas: 20
   metrics:
-    - resource:
-        name: cpu
-        target:
-          averageUtilization: 100
-          type: Utilization
-      type: Resource
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 100
+        type: Utilization
+    type: Resource
   minReplicas: 1
   scaleTargetRef:
     apiVersion: apps/v1

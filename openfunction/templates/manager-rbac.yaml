@@ -75,26 +75,6 @@ rules:
 - apiGroups:
   - core.openfunction.io
   resources:
-  - domains
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - core.openfunction.io
-  resources:
-  - domains/status
-  verbs:
-  - get
-  - patch
-  - update
-- apiGroups:
-  - core.openfunction.io
-  resources:
   - functions
   verbs:
   - create
@@ -262,6 +242,38 @@ rules:
   - patch
   - update
 - apiGroups:
+  - gateway.networking.k8s.io
+  resources:
+  - gateways
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - gateway.networking.k8s.io
+  resources:
+  - gateways/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - gateway.networking.k8s.io
+  resources:
+  - httproutes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
   - keda.sh
   resources:
   - scaledjobs
@@ -275,9 +287,9 @@ rules:
   - update
   - watch
 - apiGroups:
-  - networking.k8s.io
+  - networking.openfunction.io
   resources:
-  - ingresses
+  - gateways
   verbs:
   - create
   - delete
@@ -286,6 +298,20 @@ rules:
   - patch
   - update
   - watch
+- apiGroups:
+  - networking.openfunction.io
+  resources:
+  - gateways/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - networking.openfunction.io
+  resources:
+  - gateways/status
+  verbs:
+  - get
+  - patch
+  - update
 - apiGroups:
   - serving.knative.dev
   resources:

@@ -25,8 +25,12 @@ spec:
         - --leader-elect
         command:
         - /openfunction
-        image: {{ .Values.controllerManager.openfunction.image.repository }}:{{ .Values.controllerManager.openfunction.image.tag
-          | default .Chart.AppVersion }}
+        env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ .Values.kubernetesClusterDomain }}
+        {{- with .Values.controllerManager.openfunction.image }}
+        image: {{ .repository }}:{{ .tag }}
+        {{- end }}
         livenessProbe:
           httpGet:
             path: /healthz
@@ -44,8 +48,7 @@ spec:
             port: 8081
           initialDelaySeconds: 5
           periodSeconds: 10
-        resources: {{- toYaml .Values.controllerManager.openfunction.resources | nindent
-          10 }}
+        resources: {{- toYaml .Values.controllerManager.openfunction.resources | nindent 10 }}
         securityContext:
           allowPrivilegeEscalation: false
         volumeMounts:
@@ -57,8 +60,12 @@ spec:
         - --upstream=http://127.0.0.1:8080/
         - --logtostderr=true
         - --v=10
-        image: {{ .Values.controllerManager.kubeRbacProxy.image.repository }}:{{ .Values.controllerManager.kubeRbacProxy.image.tag
-          | default .Chart.AppVersion }}
+        env:
+        - name: KUBERNETES_CLUSTER_DOMAIN
+          value: {{ .Values.kubernetesClusterDomain }}
+        {{- with .Values.controllerManager.kubeRbacProxy.image}}
+        image: {{ .repository }}:{{ .tag }}
+        {{- end }}
         name: kube-rbac-proxy
         ports:
         - containerPort: 8443

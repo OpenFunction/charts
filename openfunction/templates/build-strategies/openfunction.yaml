@@ -6,6 +6,13 @@ metadata:
   labels:
   {{- include "openfunction.labels" . | nindent 4 }}
 spec:
+  volumes:
+    - emptyDir: { }
+      name: cache
+    - emptyDir: { }
+      name: layers-dir
+    - emptyDir: { }
+      name: $(params.PLATFORM_DIR)
   buildSteps:
   - args:
     - -c

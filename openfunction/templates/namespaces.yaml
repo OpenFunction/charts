@@ -33,11 +33,13 @@ metadata:
   name: shipwright-build
 {{- end }}
 ---
-{{- if .Values.IngressNginx.enabled }}
+{{- if .Values.Contour.enabled }}
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ingress-nginx
+  name: projectcontour
   annotations:
-    "helm.sh/hook": pre-install
+    "helm.sh/hook": "pre-install,pre-upgrade"
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/resource-policy": keep
 {{- end }}

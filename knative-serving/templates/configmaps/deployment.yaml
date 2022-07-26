@@ -3,9 +3,10 @@ kind: ConfigMap
 metadata:
   name: config-deployment
   labels:
-    app.kubernetes.io/part-of: knative-serving
-    app.kubernetes.io/version: 1.0.1
-    serving.knative.dev/release: v1.0.1
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/name: knative-serving
+    app.kubernetes.io/version: 1.3.2
+    serving.knative.dev/release: v1.3.2
   {{- include "knative-serving.labels" . | nindent 4 }}
   annotations:
     knative.dev/example-checksum: dd7ee769
@@ -81,4 +82,6 @@ data:
     #
     # NOTE THAT THIS IS AN EXPERIMENTAL / ALPHA FEATURE
     concurrency-state-endpoint: ""
-  queueSidecarImage: {{ .Values.configDeployment.queueSidecarImage.repository}}@{{ .Values.configDeployment.queueSidecarImage.digest}}
+  {{- with .Values.configDeployment.queueSidecarImage }}
+  queueSidecarImage: {{ .repository }}:{{ .tag }}
+  {{- end }}

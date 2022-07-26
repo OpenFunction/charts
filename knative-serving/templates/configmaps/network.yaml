@@ -3,11 +3,14 @@ kind: ConfigMap
 metadata:
   name: config-network
   labels:
-    serving.knative.dev/release: v1.0.1
-  {{- include "knative-serving.labels" . | nindent 4 }}
+    app.kubernetes.io/component: networking
+    app.kubernetes.io/name: knative-serving
+    app.kubernetes.io/version: 1.3.2
+    serving.knative.dev/release: v1.3.2
+    {{- include "knative-serving.labels" . | nindent 4 }}
   annotations:
-    knative.dev/example-checksum: 6e2033e0
+    knative.dev/example-checksum: ddc3250f
 data:
-  ingress-class: "kourier.ingress.networking.knative.dev"
+  ingress-class: "contour.ingress.networking.knative.dev"
   _example: |
   {{- .Files.Get "files/network.example" | nindent 4 }}
