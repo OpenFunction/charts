@@ -1,0 +1,25 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: knative-serving-contour
+  labels:
+    app.kubernetes.io/component: net-contour
+    app.kubernetes.io/name: knative-serving
+    app.kubernetes.io/version: 1.3.0
+    networking.knative.dev/ingress-provider: contour
+    serving.knative.dev/controller: "true"
+  {{- include "knative-serving.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - projectcontour.io
+  resources:
+  - httpproxies
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - deletecollection
+  - patch
+  - watch

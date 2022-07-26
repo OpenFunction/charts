@@ -1,14 +1,8 @@
-ScaleKourierGateway:
-  kourierGateway:
-    image:
-      repository: docker.io/envoyproxy/envoy
-      tag: v1.17-latest
 activator:
   activator:
     image:
       repository: gcr.io/knative-releases/knative.dev/serving/cmd/activator
-      tag:
-      digest: sha256:ca607f73e5daef7f3db0358e145220f8423e93c20ee7ea9f5595f13bd508289a
+      tag: v1.3.2
     resources:
       limits:
         cpu: "1"
@@ -35,8 +29,7 @@ autoscaler:
   autoscaler:
     image:
       repository: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler
-      tag:
-      digest: sha256:31aed8b5b241147585cb0e48366451a96354fc6036d6a5667997237c1d302d98
+      tag: v1.3.2
     resources:
       limits:
         cpu: "1"
@@ -61,8 +54,7 @@ configDefaults:
 configDeployment:
   queueSidecarImage:
     repository: gcr.io/knative-releases/knative.dev/serving/cmd/queue
-    tag:
-    digest: sha256:80dfb4568e08e43093f93b2cae9401f815efcb67ad8442d1f7f4c8a41e071fbe
+    tag: v1.3.2
 configDomain:
 configFeatures:
 configGc:
@@ -76,8 +68,7 @@ controller:
   controller:
     image:
       repository: gcr.io/knative-releases/knative.dev/serving/cmd/controller
-      tag:
-      digest: sha256:c5a77d5642065ff3452d9b043a7226b85bfc81dc068f8dded905abf88d917a4d
+      tag: v1.3.2
     resources:
       limits:
         cpu: "1"
@@ -97,8 +88,7 @@ domainMapping:
   domainMapping:
     image:
       repository: gcr.io/knative-releases/knative.dev/serving/cmd/domain-mapping
-      tag:
-      digest: sha256:6b5356cf3a2b64d52cbbf1bc0de376b816c4d3f610ccc8ff2dabf3d259c0996b
+      tag: v1.3.2
     resources:
       limits:
         cpu: 300m
@@ -110,8 +100,7 @@ domainmappingWebhook:
   domainmappingWebhook:
     image:
       repository: gcr.io/knative-releases/knative.dev/serving/cmd/domain-mapping-webhook
-      tag:
-      digest: sha256:d0cc86f2002660c4804f6e0aed8218d39384c73a8b5006c9ac558becd8f48aa6
+      tag: v1.3.2
     resources:
       limits:
         cpu: 500m
@@ -130,65 +119,25 @@ domainmappingWebhook:
       port: 443
       targetPort: 8443
   type: ClusterIP
-kourier:
-  ports:
-    - name: http2
-      port: 80
-      protocol: TCP
-      targetPort: 8080
-    - name: https
-      port: 443
-      protocol: TCP
-      targetPort: 8443
-  type: LoadBalancer
-kourierBootstrap:
-  envoyBootstrapYaml:
-    admin:
-      accessLogPath: /dev/stdout
-      address:
-        pipe:
-          path: /tmp/envoy.admin
-    dynamicResources:
-      adsConfig:
-        apiType: GRPC
-        rateLimitSettings: {}
-        transportApiVersion: V3
-      cdsConfig:
-        ads: {}
-        resourceApiVersion: V3
-      ldsConfig:
-        ads: {}
-        resourceApiVersion: V3
-    node:
-      cluster: kourier-knative
-      id: 3scale-kourier-gateway
-kourierInternal:
-  ports:
-    - name: http2
-      port: 80
-      protocol: TCP
-      targetPort: 8081
-  type: ClusterIP
 kubernetesClusterDomain: cluster.local
-netKourierController:
+netContourController:
   controller:
     image:
-      repository: gcr.io/knative-releases/knative.dev/net-kourier/cmd/kourier
-      tag:
-      digest: sha256:cd70f2bb54f2575082e54b0df1b74908c3f4873ffc9750ca8da36d7b9bfe5b2d
-  ports:
-    - name: grpc-xds
-      port: 18000
-      protocol: TCP
-      targetPort: 18000
+      repository: gcr.io/knative-releases/knative.dev/net-contour/cmd/controller
+      tag: v1.3.0
+    resources:
+      limits:
+        cpu: 400m
+        memory: 400Mi
+      requests:
+        cpu: 40m
+        memory: 40Mi
   replicas: 1
-  type: ClusterIP
 defaultDomain:
   job:
     image:
       repository: gcr.io/knative-releases/knative.dev/serving/cmd/default-domain
-      tag:
-      digest: sha256:4bd6f5a7748644e56bb266d5c10f442b2548b484b57059ee64ec2a793dd1b976
+      tag: v1.3.2
   ports:
     - name: http
       port: 80
@@ -209,8 +158,7 @@ webhook:
   webhook:
     image:
       repository: gcr.io/knative-releases/knative.dev/serving/cmd/webhook
-      tag:
-      digest: sha256:bd954ec8ced56e359bd4f60ee1886b20000df14126688c796383a3ae40cfffc0
+      tag: v1.3.2
     resources:
       limits:
         cpu: 500m

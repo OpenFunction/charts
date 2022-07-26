@@ -1,0 +1,33 @@
+{{- if .Values.Contour.enabled }}
+apiVersion: networking.openfunction.io/v1alpha1
+kind: Gateway
+metadata:
+  name: openfunction
+  labels:
+    {{- include "openfunction.labels" . | nindent 4 }}
+spec:
+  domain: ofn.io
+  clusterDomain: cluster.local
+  hostTemplate: {{"{{.Name}}.{{.Namespace}}.{{.Domain}}" | quote }}
+  pathTemplate: {{"{{.Namespace}}/{{.Name}}" | quote}}
+  httpRouteLabelKey: "app.kubernetes.io/managed-by"
+  gatewayRef:
+    name: contour
+    namespace: projectcontour
+  gatewaySpec:
+    listeners:
+      - name: ofn-http-internal
+        hostname: "*.cluster.local"
+        protocol: HTTP
+        port: 80
+        allowedRoutes:
+          namespaces:
+            from: All
+      - name: ofn-http-external
+        hostname: "*.ofn.io"
+        protocol: HTTP
+        port: 80
+        allowedRoutes:
+          namespaces:
+            from: All
+{{- end }}

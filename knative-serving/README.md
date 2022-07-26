@@ -1,6 +1,6 @@
 # knative-serving
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.1](https://img.shields.io/badge/AppVersion-1.0.1-informational?style=flat-square)
+![Version: 1.3.2](https://img.shields.io/badge/Version-1.3.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.3.2](https://img.shields.io/badge/AppVersion-1.3.2-informational?style=flat-square)
 
 A Helm chart for Knative Serving on Kubernetes
 
@@ -14,14 +14,9 @@ A Helm chart for Knative Serving on Kubernetes
 
 * <https://github.com/knative/serving>
 
+## Requirements
 
-## Prerequisites
-
-* Kubernetes cluster with RBAC (Role-Based Access Control) enabled is required
-* Helm 3.4.0 or newer
-
-## Resources Required
-* <https://knative.dev/docs/install/yaml-install/serving/install-serving-with-yaml/#prerequisites>
+Kubernetes: `>=v1.21.0-0`
 
 ## Install the Chart
 
@@ -57,9 +52,7 @@ helm uninstall knative-serving -n knative-serving
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| ScaleKourierGateway.kourierGateway.image.repository | string | `"docker.io/envoyproxy/envoy"` |  |
-| ScaleKourierGateway.kourierGateway.image.tag | string | `"v1.17-latest"` |  |
-| activator.activator.image.digest | string | `"sha256:ca607f73e5daef7f3db0358e145220f8423e93c20ee7ea9f5595f13bd508289a"` |  |
+| activator.activator.image.digest | string | `"sha256:01270196a1eba7e5fd5fe34b877c82a7e8c93861de535a82342717d28f81d671"` |  |
 | activator.activator.image.repository | string | `"gcr.io/knative-releases/knative.dev/serving/cmd/activator"` |  |
 | activator.activator.image.tag | string | `nil` |  |
 | activator.activator.resources.limits.cpu | string | `"1"` |  |
@@ -79,7 +72,7 @@ helm uninstall knative-serving -n knative-serving
 | activatorService.ports[3].port | int | `81` |  |
 | activatorService.ports[3].targetPort | int | `8013` |  |
 | activatorService.type | string | `"ClusterIP"` |  |
-| autoscaler.autoscaler.image.digest | string | `"sha256:31aed8b5b241147585cb0e48366451a96354fc6036d6a5667997237c1d302d98"` |  |
+| autoscaler.autoscaler.image.digest | string | `"sha256:c5a03a236bfe2abdc7d40203d787668c8accaaf39062a86e68b4d403077835e2"` |  |
 | autoscaler.autoscaler.image.repository | string | `"gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler"` |  |
 | autoscaler.autoscaler.image.tag | string | `nil` |  |
 | autoscaler.autoscaler.resources.limits.cpu | string | `"1"` |  |
@@ -99,7 +92,7 @@ helm uninstall knative-serving -n knative-serving
 | autoscaler.type | string | `"ClusterIP"` |  |
 | configAutoscaler | string | `nil` |  |
 | configDefaults | string | `nil` |  |
-| configDeployment.queueSidecarImage.digest | string | `"sha256:80dfb4568e08e43093f93b2cae9401f815efcb67ad8442d1f7f4c8a41e071fbe"` |  |
+| configDeployment.queueSidecarImage.digest | string | `"sha256:2249dc873059c0dfc0783bce5f614a0d8ada3d4499d63aa1dffd19f2788ba64b"` |  |
 | configDeployment.queueSidecarImage.repository | string | `"gcr.io/knative-releases/knative.dev/serving/cmd/queue"` |  |
 | configDeployment.queueSidecarImage.tag | string | `nil` |  |
 | configDomain | string | `nil` |  |
@@ -111,7 +104,7 @@ helm uninstall knative-serving -n knative-serving
 | configNetwork | string | `nil` |  |
 | configObservability | string | `nil` |  |
 | configTracing | string | `nil` |  |
-| controller.controller.image.digest | string | `"sha256:c5a77d5642065ff3452d9b043a7226b85bfc81dc068f8dded905abf88d917a4d"` |  |
+| controller.controller.image.digest | string | `"sha256:cc33e6392485e9d015886d4443324b9a41c17f6ce98b31ef4b19e47325a9a7e8"` |  |
 | controller.controller.image.repository | string | `"gcr.io/knative-releases/knative.dev/serving/cmd/controller"` |  |
 | controller.controller.image.tag | string | `nil` |  |
 | controller.controller.resources.limits.cpu | string | `"1"` |  |
@@ -125,21 +118,21 @@ helm uninstall knative-serving -n knative-serving
 | controller.ports[1].port | int | `8008` |  |
 | controller.ports[1].targetPort | int | `8008` |  |
 | controller.type | string | `"ClusterIP"` |  |
-| defaultDomain.job.image.digest | string | `"sha256:4bd6f5a7748644e56bb266d5c10f442b2548b484b57059ee64ec2a793dd1b976"` |  |
+| defaultDomain.job.image.digest | string | `"sha256:cd392fc65e96c9b7361a477d0daa8ac5b29af41909296c74b4e58fad1a3df76f"` |  |
 | defaultDomain.job.image.repository | string | `"gcr.io/knative-releases/knative.dev/serving/cmd/default-domain"` |  |
 | defaultDomain.job.image.tag | string | `nil` |  |
 | defaultDomain.ports[0].name | string | `"http"` |  |
 | defaultDomain.ports[0].port | int | `80` |  |
 | defaultDomain.ports[0].targetPort | int | `8080` |  |
 | defaultDomain.type | string | `"ClusterIP"` |  |
-| domainMapping.domainMapping.image.digest | string | `"sha256:6b5356cf3a2b64d52cbbf1bc0de376b816c4d3f610ccc8ff2dabf3d259c0996b"` |  |
+| domainMapping.domainMapping.image.digest | string | `"sha256:00a26f25ef119952b0ecf890f9f9dcb877b5f5d496f43c44756b93343d71b66e"` |  |
 | domainMapping.domainMapping.image.repository | string | `"gcr.io/knative-releases/knative.dev/serving/cmd/domain-mapping"` |  |
 | domainMapping.domainMapping.image.tag | string | `nil` |  |
 | domainMapping.domainMapping.resources.limits.cpu | string | `"300m"` |  |
 | domainMapping.domainMapping.resources.limits.memory | string | `"400Mi"` |  |
 | domainMapping.domainMapping.resources.requests.cpu | string | `"30m"` |  |
 | domainMapping.domainMapping.resources.requests.memory | string | `"40Mi"` |  |
-| domainmappingWebhook.domainmappingWebhook.image.digest | string | `"sha256:d0cc86f2002660c4804f6e0aed8218d39384c73a8b5006c9ac558becd8f48aa6"` |  |
+| domainmappingWebhook.domainmappingWebhook.image.digest | string | `"sha256:f8f09d3a509b0c25d50be7532d4337a30df4ec5f51b9ed23ad9f21b3940c16ca"` |  |
 | domainmappingWebhook.domainmappingWebhook.image.repository | string | `"gcr.io/knative-releases/knative.dev/serving/cmd/domain-mapping-webhook"` |  |
 | domainmappingWebhook.domainmappingWebhook.image.tag | string | `nil` |  |
 | domainmappingWebhook.domainmappingWebhook.resources.limits.cpu | string | `"500m"` |  |
@@ -156,41 +149,15 @@ helm uninstall knative-serving -n knative-serving
 | domainmappingWebhook.ports[2].port | int | `443` |  |
 | domainmappingWebhook.ports[2].targetPort | int | `8443` |  |
 | domainmappingWebhook.type | string | `"ClusterIP"` |  |
-| kourier.ports[0].name | string | `"http2"` |  |
-| kourier.ports[0].port | int | `80` |  |
-| kourier.ports[0].protocol | string | `"TCP"` |  |
-| kourier.ports[0].targetPort | int | `8080` |  |
-| kourier.ports[1].name | string | `"https"` |  |
-| kourier.ports[1].port | int | `443` |  |
-| kourier.ports[1].protocol | string | `"TCP"` |  |
-| kourier.ports[1].targetPort | int | `8443` |  |
-| kourier.type | string | `"LoadBalancer"` |  |
-| kourierBootstrap.envoyBootstrapYaml.admin.accessLogPath | string | `"/dev/stdout"` |  |
-| kourierBootstrap.envoyBootstrapYaml.admin.address.pipe.path | string | `"/tmp/envoy.admin"` |  |
-| kourierBootstrap.envoyBootstrapYaml.dynamicResources.adsConfig.apiType | string | `"GRPC"` |  |
-| kourierBootstrap.envoyBootstrapYaml.dynamicResources.adsConfig.rateLimitSettings | object | `{}` |  |
-| kourierBootstrap.envoyBootstrapYaml.dynamicResources.adsConfig.transportApiVersion | string | `"V3"` |  |
-| kourierBootstrap.envoyBootstrapYaml.dynamicResources.cdsConfig.ads | object | `{}` |  |
-| kourierBootstrap.envoyBootstrapYaml.dynamicResources.cdsConfig.resourceApiVersion | string | `"V3"` |  |
-| kourierBootstrap.envoyBootstrapYaml.dynamicResources.ldsConfig.ads | object | `{}` |  |
-| kourierBootstrap.envoyBootstrapYaml.dynamicResources.ldsConfig.resourceApiVersion | string | `"V3"` |  |
-| kourierBootstrap.envoyBootstrapYaml.node.cluster | string | `"kourier-knative"` |  |
-| kourierBootstrap.envoyBootstrapYaml.node.id | string | `"3scale-kourier-gateway"` |  |
-| kourierInternal.ports[0].name | string | `"http2"` |  |
-| kourierInternal.ports[0].port | int | `80` |  |
-| kourierInternal.ports[0].protocol | string | `"TCP"` |  |
-| kourierInternal.ports[0].targetPort | int | `8081` |  |
-| kourierInternal.type | string | `"ClusterIP"` |  |
 | kubernetesClusterDomain | string | `"cluster.local"` |  |
-| netKourierController.controller.image.digest | string | `"sha256:cd70f2bb54f2575082e54b0df1b74908c3f4873ffc9750ca8da36d7b9bfe5b2d"` |  |
-| netKourierController.controller.image.repository | string | `"gcr.io/knative-releases/knative.dev/net-kourier/cmd/kourier"` |  |
-| netKourierController.controller.image.tag | string | `nil` |  |
-| netKourierController.ports[0].name | string | `"grpc-xds"` |  |
-| netKourierController.ports[0].port | int | `18000` |  |
-| netKourierController.ports[0].protocol | string | `"TCP"` |  |
-| netKourierController.ports[0].targetPort | int | `18000` |  |
-| netKourierController.replicas | int | `1` |  |
-| netKourierController.type | string | `"ClusterIP"` |  |
+| netContourController.controller.image.digest | string | `"sha256:8a91ddd952225b231d05054698e381d3af9c36e86bc472261e3a865a00c206aa"` |  |
+| netContourController.controller.image.repository | string | `"gcr.io/knative-releases/knative.dev/net-contour/cmd/controller"` |  |
+| netContourController.controller.image.tag | string | `nil` |  |
+| netContourController.controller.resources.limits.cpu | string | `"400m"` |  |
+| netContourController.controller.resources.limits.memory | string | `"400Mi"` |  |
+| netContourController.controller.resources.requests.cpu | string | `"40m"` |  |
+| netContourController.controller.resources.requests.memory | string | `"40Mi"` |  |
+| netContourController.replicas | int | `1` |  |
 | webhook.ports[0].name | string | `"http-metrics"` |  |
 | webhook.ports[0].port | int | `9090` |  |
 | webhook.ports[0].targetPort | int | `9090` |  |
@@ -201,7 +168,7 @@ helm uninstall knative-serving -n knative-serving
 | webhook.ports[2].port | int | `443` |  |
 | webhook.ports[2].targetPort | int | `8443` |  |
 | webhook.type | string | `"ClusterIP"` |  |
-| webhook.webhook.image.digest | string | `"sha256:bd954ec8ced56e359bd4f60ee1886b20000df14126688c796383a3ae40cfffc0"` |  |
+| webhook.webhook.image.digest | string | `"sha256:b001a58cb7eac7fbae4d83d8a111fa0f6726d36e86844d5b1dc3c9b8fdd5710a"` |  |
 | webhook.webhook.image.repository | string | `"gcr.io/knative-releases/knative.dev/serving/cmd/webhook"` |  |
 | webhook.webhook.image.tag | string | `nil` |  |
 | webhook.webhook.resources.limits.cpu | string | `"500m"` |  |

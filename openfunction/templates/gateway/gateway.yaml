@@ -1,0 +1,18 @@
+{{- if .Values.Contour.enabled }}
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: Gateway
+metadata:
+  name: contour
+  namespace: projectcontour
+  labels:
+    {{- include "openfunction.labels" . | nindent 4 }}
+spec:
+  gatewayClassName: contour
+  listeners:
+    - name: http
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
+{{- end }}

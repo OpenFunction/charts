@@ -22,7 +22,7 @@
 # will result in undefined behavior.  Therefore it is best to only
 # update this value during the setup of Knative, to avoid getting
 # undefined behavior.
-ingress-class: "kourier.ingress.networking.knative.dev"
+ingress-class: "istio.ingress.networking.knative.dev"
 
 # certificate-class specifies the default Certificate class
 # to use when not dictated by Route annotation.
@@ -145,3 +145,19 @@ mesh-compatibility-mode: "auto"
 # fronting Knative with an external loadbalancer that deals with TLS termination and
 # Knative doesn't know about that otherwise.
 default-external-scheme: "http"
+
+# The CA public certificate used to sign the activator TLS certificate.
+# It is specified by the secret name, which has the "ca.crt" data field.
+# Use an empty value to disable the feature (default).
+#
+# NOTE: This flag is in an alpha state and is mostly here to enable internal testing
+#       for now. Use with caution.
+activator-ca: ""
+
+# The SAN (Subject Alt Name) used to validate the activator TLS certificate.
+# It is available only when "activator-ca" is specified.
+# Use an empty value to disable the feature (default).
+#
+# NOTE: This flag is in an alpha state and is mostly here to enable internal testing
+#       for now. Use with caution.
+activator-san: ""

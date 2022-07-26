@@ -3,12 +3,13 @@ kind: ConfigMap
 metadata:
   name: config-gc
   labels:
-    app.kubernetes.io/part-of: knative-serving
-    app.kubernetes.io/version: 1.0.1
-    serving.knative.dev/release: v1.0.1
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/name: knative-serving
+    app.kubernetes.io/version: 1.3.2
+    serving.knative.dev/release: v1.3.2
   {{- include "knative-serving.labels" . | nindent 4 }}
   annotations:
-    knative.dev/example-checksum: 51b4d68a
+    knative.dev/example-checksum: "45463e45"
 data:
   _example: |
     ################################
@@ -49,6 +50,7 @@ data:
     #
     # Example config to immediately collect any inactive revision:
     #    min-non-active-revisions: "0"
+    #    max-non-active-revisions: "0"
     #    retain-since-create-time: "disabled"
     #    retain-since-last-active-time: "disabled"
     #

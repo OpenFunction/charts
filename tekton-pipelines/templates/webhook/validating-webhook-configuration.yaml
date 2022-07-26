@@ -5,15 +5,15 @@ metadata:
   labels:
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
 webhooks:
-  - admissionReviewVersions:
-      - v1
-    clientConfig:
-      service:
-        name: '{{ include "tekton-pipelines.fullname" . }}-webhook'
-        namespace: '{{ .Release.Namespace }}'
-    failurePolicy: Fail
-    name: validation.webhook.pipeline.tekton.dev
-    sideEffects: None
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    service:
+      name: '{{ include "tekton-pipelines.fullname" . }}-webhook'
+      namespace: '{{ .Release.Namespace }}'
+  failurePolicy: Fail
+  name: validation.webhook.pipeline.tekton.dev
+  sideEffects: None
 ---
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration

@@ -3,28 +3,42 @@ kind: PodSecurityPolicy
 metadata:
   name: tekton-pipelines
   labels:
+    app.kubernetes.io/instance: default
+    app.kubernetes.io/part-of: tekton-pipelines
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
+  annotations:
+    apparmor.security.beta.kubernetes.io/allowedProfileNames: runtime/default
+    apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default
+    seccomp.security.alpha.kubernetes.io/allowedProfileNames: docker/default,runtime/default
+    seccomp.security.alpha.kubernetes.io/defaultProfileName: runtime/default
 spec:
   allowPrivilegeEscalation: false
   fsGroup:
     ranges:
-      - max: 65535
-        min: 1
+    - max: 65535
+      min: 1
     rule: MustRunAs
   hostIPC: false
   hostNetwork: false
   hostPID: false
   privileged: false
+  requiredDropCapabilities:
+  - ALL
+  runAsGroup:
+    ranges:
+    - max: 65535
+      min: 1
+    rule: MustRunAs
   runAsUser:
     rule: MustRunAsNonRoot
   seLinux:
     rule: RunAsAny
   supplementalGroups:
     ranges:
-      - max: 65535
-        min: 1
+    - max: 65535
+      min: 1
     rule: MustRunAs
   volumes:
-    - emptyDir
-    - configMap
-    - secret
+  - emptyDir
+  - configMap
+  - secret

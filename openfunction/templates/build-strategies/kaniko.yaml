@@ -3,39 +3,16 @@ apiVersion: shipwright.io/v1alpha1
 kind: ClusterBuildStrategy
 metadata:
   name: kaniko
-  labels:
-  {{- include "openfunction.labels" . | nindent 4 }}
 spec:
+  volumes:
+    - name: layout
+      emptyDir: {}
   buildSteps:
-    - args:
-        - --skip-tls-verify=true
-        - --dockerfile=$(build.dockerfile)
-        - --context=$(params.shp-source-context)
-        - --destination=$(params.shp-output-image)
-        - --oci-layout-path=/kaniko/oci-image-layout
-        - --snapshotMode=redo
-        - --push-retry=3
-      command:
-        - /kaniko/executor
-      env:
-        - name: HOME
-          value: /tekton/home
-        - name: DOCKER_CONFIG
-          value: /tekton/home/.docker
-        - name: AWS_ACCESS_KEY_ID
-          value: NOT_SET
-        - name: AWS_SECRET_KEY
-          value: NOT_SET
-      image: $(params.BUILDER_IMAGE)
-      name: build-and-push
-      resources:
-        limits:
-          cpu: 1
-          memory: 1Gi
-        requests:
-          cpu: 250m
-          memory: 65Mi
+    - name: build-and-push
+      image: gcr.io/kaniko-project/executor:v1.8.1
+      workingDir: $(params.shp-source-root)
       securityContext:
+        runAsUser: 0
         capabilities:
           add:
             - CHOWN
@@ -45,12 +22,40 @@ spec:
             - SETUID
             - SETFCAP
             - KILL
-        runAsUser: 0
+      env:
+        - name: HOME
+          value: /tekton/home
+        - name: DOCKER_CONFIG
+          value: /tekton/home/.docker
+        - name: AWS_ACCESS_KEY_ID
+          value: NOT_SET
+        - name: AWS_SECRET_KEY
+          value: NOT_SET
+      command:
+        - /kaniko/executor
+      args:
+        - --skip-tls-verify=true
+        - --dockerfile=$(build.dockerfile)
+        - --context=$(params.shp-source-context)
+        - --destination=$(params.shp-output-image)
+        - --oci-layout-path=/kaniko/oci-image-layout
+        - --snapshotMode=redo
+        - --push-retry=3
+      resources:
+        limits:
+          cpu: 500m
+          memory: 1Gi
+        requests:
+          cpu: 250m
+          memory: 65Mi
       volumeMounts:
-        - mountPath: /kaniko/oci-image-layout
-          name: layout
-      workingDir: $(params.shp-source-root)
-    - args:
+        - name: layout
+          mountPath: /kaniko/oci-image-layout
+    - name: results
+      image: registry.access.redhat.com/ubi8/ubi-minimal
+      command:
+        - /bin/bash
+      args:
         - -c
         - |
           set -euo pipefail
@@ -60,10 +65,6 @@ spec:
 
           # Store the image size
           du -b -c /kaniko/oci-image-layout/blobs/sha256/* | tail -1 | sed 's/\s*total//' | tr -d '\n' > "$(results.shp-image-size.path)"
-      command:
-        - /bin/bash
-      image: golang:latest
-      name: results
       resources:
         limits:
           cpu: 100m
@@ -72,6 +73,6 @@ spec:
           cpu: 100m
           memory: 128Mi
       volumeMounts:
-        - mountPath: /kaniko/oci-image-layout
-          name: layout
+        - name: layout
+          mountPath: /kaniko/oci-image-layout
 {{- end }}

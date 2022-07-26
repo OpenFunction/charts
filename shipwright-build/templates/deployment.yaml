@@ -32,18 +32,21 @@ spec:
                   fieldPath: metadata.name
             - name: CONTROLLER_NAME
               value: shipwright-build
+            - name: GIT_ENABLE_REWRITE_RULE
+              value: "false"
             {{- with .Values.shipwrightBuildController.shipwrightBuild}}
             - name: GIT_CONTAINER_IMAGE
-              value: {{ .GIT_CONTAINER_IMAGE.repository }}:{{ .GIT_CONTAINER_IMAGE.tag }}@{{ .GIT_CONTAINER_IMAGE.digest }}
+              value: {{ .GIT_CONTAINER_IMAGE.repository }}:{{ .GIT_CONTAINER_IMAGE.tag }}
             - name: MUTATE_IMAGE_CONTAINER_IMAGE
-              value: {{ .MUTATE_IMAGE_CONTAINER_IMAGE.repository }}:{{ .MUTATE_IMAGE_CONTAINER_IMAGE.tag }}@{{ .MUTATE_IMAGE_CONTAINER_IMAGE.digest }}
+              value: {{ .MUTATE_IMAGE_CONTAINER_IMAGE.repository }}:{{ .MUTATE_IMAGE_CONTAINER_IMAGE.tag }}
             - name: BUNDLE_CONTAINER_IMAGE
-              value: {{ .BUNDLE_CONTAINER_IMAGE.repository }}:{{ .BUNDLE_CONTAINER_IMAGE.tag }}@{{ .BUNDLE_CONTAINER_IMAGE.digest }}
-            {{- end }}
+              value: {{ .BUNDLE_CONTAINER_IMAGE.repository }}:{{ .BUNDLE_CONTAINER_IMAGE.tag }}
+            - name: WAITER_CONTAINER_IMAGE
+              value: {{ .WAITER_CONTAINER_IMAGE.repository }}:{{ .WAITER_CONTAINER_IMAGE.tag }}
             - name: KUBERNETES_CLUSTER_DOMAIN
-              value: {{ .Values.kubernetesClusterDomain }}
-          image: {{ .Values.shipwrightBuildController.shipwrightBuild.image.repository }}:{{ .Values.shipwrightBuildController.shipwrightBuild.image.tag
-          | default .Chart.AppVersion }}@{{.Values.shipwrightBuildController.shipwrightBuild.image.digest}}
+              value: {{ $.Values.kubernetesClusterDomain }}
+          image: {{ .image.repository }}:{{ .image.tag }}
+            {{- end }}
           livenessProbe:
             httpGet:
               path: /metrics
