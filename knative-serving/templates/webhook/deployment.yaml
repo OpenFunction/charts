@@ -56,6 +56,10 @@ spec:
           value: knative.dev/serving
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ .Values.kubernetesClusterDomain }}
+        {{- if semverCompare "<1.21-0" .Capabilities.KubeVersion.Version }}
+        - name: KUBERNETES_MIN_VERSION
+          value: {{ .Capabilities.KubeVersion }}
+        {{- end }}
         {{- with .Values.domainmappingWebhook.domainmappingWebhook.image }}
         image: {{ .repository }}:{{ .tag }}
         {{- end }}
@@ -156,6 +160,10 @@ spec:
           value: knative.dev/internal/serving
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ .Values.kubernetesClusterDomain }}
+        {{- if semverCompare "<1.21-0" .Capabilities.KubeVersion.Version }}
+        - name: KUBERNETES_MIN_VERSION
+          value: {{ .Capabilities.KubeVersion }}
+        {{- end }}
         {{- with .Values.webhook.webhook.image }}
         image: {{ .repository }}:{{ .tag }}
         {{- end }}
