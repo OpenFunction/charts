@@ -33,6 +33,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        {{- if semverCompare "<1.21-0" .Capabilities.KubeVersion.Version }}
+        - name: KUBERNETES_MIN_VERSION
+          value: {{ .Capabilities.KubeVersion }}
+        {{- end }}
         {{- with .Values.defaultDomain.job.image}}
         image: {{ .repository }}:{{ .tag }}
         {{- end }}
