@@ -24,13 +24,13 @@ Ensure Helm is initialized in your Kubernetes cluster.
 
 For more details on initializing Helm, [read the Helm docs](https://helm.sh/docs/)
 
-1. Add openfunction.github.io as an helm repo
+1. Add `openfunction.github.io` as a helm repo:
     ```
-    helm repo add openfunction https://openfunction.github.io/helm-charts/
+    helm repo add openfunction https://openfunction.github.io/charts/
     helm repo update
     ```
 
-2. Install the tekton-pipelines chart on your cluster in the tekton-pipelines namespace:
+2. Install the `tekton-pipelines` chart on your cluster in the `tekton-pipelines` namespace:
     ```
     helm install tekton-pipelines openfunction/tekton-pipelines -n tekton-pipelines --create-namespace
     ```
@@ -38,7 +38,7 @@ For more details on initializing Helm, [read the Helm docs](https://helm.sh/docs
 ## Verify installation
 
 ```
-kubectl get pods -namespace tekton-pipelines
+kubectl get po -n tekton-pipelines
 ```
 
 ## Uninstall the Chart
@@ -69,28 +69,21 @@ helm uninstall tekton-pipelines -n tekton-pipelines
 | controller.ports[2].port | int | `8080` |  |
 | controller.ports[2].targetPort | int | `0` |  |
 | controller.replicas | int | `1` |  |
-| controller.tektonPipelinesController.entrypointImage.digest | string | `"sha256:54f4d25dee6205e9280ffc41acf8dad448cf5f3a318f47dcee49382529bc666f"` |  |
 | controller.tektonPipelinesController.entrypointImage.repository | string | `"gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/entrypoint"` |  |
 | controller.tektonPipelinesController.entrypointImage.tag | string | `"v0.37.2"` |  |
-| controller.tektonPipelinesController.gitImage.digest | string | `"sha256:927aa808433d17e315a258b98e2f1a55f8258e0cb782ccb76280646d0dbe17b5"` |  |
 | controller.tektonPipelinesController.gitImage.repository | string | `"gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/git-init"` |  |
 | controller.tektonPipelinesController.gitImage.tag | string | `"v0.37.2"` |  |
 | controller.tektonPipelinesController.gsutilImage.digest | string | `"sha256:27b2c22bf259d9bc1a291e99c63791ba0c27a04d2db0a43241ba0f1f20f4067f"` |  |
 | controller.tektonPipelinesController.gsutilImage.repository | string | `"gcr.io/google.com/cloudsdktool/cloud-sdk"` |  |
 | controller.tektonPipelinesController.gsutilImage.tag | string | `nil` |  |
-| controller.tektonPipelinesController.image.digest | string | `"sha256:dda70f21181d01f606bf37103a3f5b65cdfe64412208fcf6feb4c54977f189fd"` |  |
 | controller.tektonPipelinesController.image.repository | string | `"gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/controller"` |  |
 | controller.tektonPipelinesController.image.tag | string | `"v0.37.2"` |  |
-| controller.tektonPipelinesController.imagedigestExporterImage.digest | string | `"sha256:e32300d37fc9670e72f5bad6476090c5c2140bdefa874c3ddb025a99ef726f2a"` |  |
 | controller.tektonPipelinesController.imagedigestExporterImage.repository | string | `"gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/imagedigestexporter"` |  |
 | controller.tektonPipelinesController.imagedigestExporterImage.tag | string | `"v0.37.2"` |  |
-| controller.tektonPipelinesController.kubeconfigWriterImage.digest | string | `"sha256:0b31b1c02ff458ad9b7b81cbdf8f028bd54699fa151f221d1e8de6817db93427"` |  |
 | controller.tektonPipelinesController.kubeconfigWriterImage.repository | string | `"gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/kubeconfigwriter"` |  |
 | controller.tektonPipelinesController.kubeconfigWriterImage.tag | string | `"v0.37.2"` |  |
-| controller.tektonPipelinesController.nopImage.digest | string | `"sha256:0232234015006651b7316421187c40627c39450a9a30ea9bcc82a69b82f8ce12"` |  |
 | controller.tektonPipelinesController.nopImage.repository | string | `"gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/nop"` |  |
 | controller.tektonPipelinesController.nopImage.tag | string | `"v0.37.2"` |  |
-| controller.tektonPipelinesController.prImage.digest | string | `"sha256:7f93752a7af8128aa794c4014b25471af974d3d4e3042d3cf17de0e8c58432e1"` |  |
 | controller.tektonPipelinesController.prImage.repository | string | `"gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/pullrequest-init"` |  |
 | controller.tektonPipelinesController.prImage.tag | string | `"v0.37.2"` |  |
 | controller.tektonPipelinesController.shellImage.digest | string | `"sha256:19f02276bf8dbdd62f069b922f10c65262cc34b710eea26ff928129a736be791"` |  |
@@ -99,7 +92,6 @@ helm uninstall tekton-pipelines -n tekton-pipelines
 | controller.tektonPipelinesController.shellImageWin.digest | string | `"sha256:b6d5ff841b78bdf2dfed7550000fd4f3437385b8fa686ec0f010be24777654d6"` |  |
 | controller.tektonPipelinesController.shellImageWin.repository | string | `"mcr.microsoft.com/powershell:nanoserver"` |  |
 | controller.tektonPipelinesController.shellImageWin.tag | string | `nil` |  |
-| controller.tektonPipelinesController.workingdirinitImage.digest | string | `"sha256:74450b8a54a995a8a91382f52970bc14e344ea25fc28482f76dae7b399f35ba9"` |  |
 | controller.tektonPipelinesController.workingdirinitImage.repository | string | `"gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/workingdirinit"` |  |
 | controller.tektonPipelinesController.workingdirinitImage.tag | string | `"v0.37.2"` |  |
 | controller.type | string | `"ClusterIP"` |  |
@@ -127,7 +119,6 @@ helm uninstall tekton-pipelines -n tekton-pipelines
 | webhook.ports[3].targetPort | int | `0` |  |
 | webhook.replicas | int | `1` |  |
 | webhook.type | string | `"ClusterIP"` |  |
-| webhook.webhook.image.digest | string | `"sha256:2e7187c08e5a43168c89840a74c4609e648e0a391c5b3da8544cf9b835b2d0f9"` |  |
 | webhook.webhook.image.repository | string | `"gcr.io/tekton-releases/github.com/tektoncd/pipeline/cmd/webhook"` |  |
 | webhook.webhook.image.tag | string | `"v0.37.2"` |  |
 | webhook.webhook.resources.limits.cpu | string | `"500m"` |  |

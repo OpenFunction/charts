@@ -1,4 +1,4 @@
-{{- if .Values.Contour.enabled }}
+{{- if .Values.global.Contour.enabled }}
 apiVersion: networking.openfunction.io/v1alpha1
 kind: Gateway
 metadata:

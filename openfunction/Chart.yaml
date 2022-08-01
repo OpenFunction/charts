@@ -35,24 +35,24 @@ dependencies:
   - name: dapr
     version: 1.8.2
     repository: https://dapr.github.io/helm-charts/
-    condition: Dapr.enabled
+    condition: global.Dapr.enabled
   - name: knative-serving
     version: 1.3.2
     repository: "file://charts/knative-serving"
-    condition: KnativeServing.enabled
+    condition: global.KnativeServing.enabled
   - name: tekton-pipelines
     version: 0.37.2
     repository: "file://charts/tekton-pipelines"
-    condition: TektonPipelines.enabled
+    condition: global.TektonPipelines.enabled
   - name: shipwright-build
     version: 0.10.0
     repository: "file://charts/shipwright-build"
-    condition: ShipwrightBuild.enabled
+    condition: global.ShipwrightBuild.enabled
   - name: keda
     version: 2.7.2
     repository: https://kedacore.github.io/charts
-    condition: Keda.enabled
+    condition: global.Keda.enabled
   - name: contour
     version: 8.0.4
     repository: https://charts.bitnami.com/bitnami
-    condition: Contour.enabled
+    condition: global.Contour.enabled

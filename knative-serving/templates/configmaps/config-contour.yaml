@@ -1,3 +1,4 @@
+{{- if .Values.global.Contour.enabled }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -48,3 +49,4 @@ data:
       ClusterLocal:
         class: contour-internal
         service: contour-internal/envoy
+{{- end }}

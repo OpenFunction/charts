@@ -1,3 +1,4 @@
+{{- if .Values.global.Contour.enabled }}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -56,3 +57,4 @@ spec:
           readOnlyRootFilesystem: true
           runAsNonRoot: true
       serviceAccountName: controller
+{{- end }}

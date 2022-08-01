@@ -16,7 +16,7 @@ A Helm chart for OpenFunction on Kubernetes
 
 ## Requirements
 
-Kubernetes: `>=v1.21.0-0`
+Kubernetes: `>=v1.20.0-0`
 
 | Repository | Name | Version | AppVersion |
 |------------|------|---------|------------|
@@ -33,31 +33,31 @@ Ensure Helm is initialized in your Kubernetes cluster.
 
 For more details on initializing Helm, [read the Helm docs](https://helm.sh/docs/)
 
-1. Add `openfunction.github.io` as an helm repo
+1. Add `openfunction.github.io` as a helm repo:
     ```
     helm repo add openfunction https://openfunction.github.io/charts/
     helm repo update
     ```
 
-2. Install the openfunction chart on your cluster in the `openfunction` namespace:
-   - If your environment does not contain any openfunction-dependent components and you want to install all components 
+2. Install the `openfunction` chart on your cluster in the `openfunction` namespace:
+   - If your environment does not contain any openfunction-dependent components, and you want to install all components 
    directly, You can install openfunction with all dependencies with the following command:
       ```
       kubectl create namespace openfunction
       helm install openfunction openfunction/openfunction -n openfunction
       ```
-   - If your environment already contains some of the openfunction-dependent components, or if you want to install some
-   components separately for more flexibility and customizable capabilities. For example, if you already have dapr 
+   - If your environment already contains some openfunction-dependent components, or if you want to install some
+   components separately for more flexibility and customizable capabilities. For example, if you already have `dapr` 
    installed in your environment, You can install openfunction with the following command:
       ```
       kubectl create namespace openfunction
-      helm install openfunction --set Dapr.enabled=false openfunction/openfunction -n openfunction
+      helm install openfunction --set global.Dapr.enabled=false openfunction/openfunction -n openfunction
       ```
 
 ## Verify installation
 
 ```
-kubectl get pods -namespace openfunction
+kubectl get po -n openfunction
 ```
 
 ## Uninstall the Chart
@@ -71,12 +71,6 @@ helm uninstall openfunction -n openfunction
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| Contour.enabled | bool | `true` |  |
-| Dapr.enabled | bool | `true` |  |
-| Keda.enabled | bool | `true` |  |
-| KnativeServing.enabled | bool | `true` |  |
-| ShipwrightBuild.enabled | bool | `true` |  |
-| TektonPipelines.enabled | bool | `true` |  |
 | config.knativeServingConfigFeaturesName | string | `"config-features"` |  |
 | config.knativeServingNamespace | string | `"knative-serving"` |  |
 | config.pluginsTracing | string | `"enabled: false\nprovider:\n  name: \"skywalking\"\n  oapServer: \"localhost:xxx\"\ntags:\n  func: function-with-tracing\n  layer: faas\n  tag1: value1\n  tag2: value2\nbaggage:\n  key: sw8-correlation\n  value: \"base64(string key):base64(string value),base64(string key2):base64(string value2)\"\n"` |  |
@@ -93,6 +87,12 @@ helm uninstall openfunction -n openfunction
 | controllerManager.openfunction.resources.requests.cpu | string | `"100m"` |  |
 | controllerManager.openfunction.resources.requests.memory | string | `"20Mi"` |  |
 | controllerManager.replicas | int | `1` |  |
+| global.Contour.enabled | bool | `true` |  |
+| global.Dapr.enabled | bool | `true` |  |
+| global.Keda.enabled | bool | `true` |  |
+| global.KnativeServing.enabled | bool | `true` |  |
+| global.ShipwrightBuild.enabled | bool | `true` |  |
+| global.TektonPipelines.enabled | bool | `true` |  |
 | keda.image.keda.repository | string | `"openfunction/keda"` |  |
 | keda.image.keda.tag | string | `"2.7.1"` |  |
 | keda.image.metricsApiServer.repository | string | `"openfunction/keda-metrics-apiserver"` |  |
