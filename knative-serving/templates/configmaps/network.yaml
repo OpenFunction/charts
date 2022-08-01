@@ -11,6 +11,8 @@ metadata:
   annotations:
     knative.dev/example-checksum: ddc3250f
 data:
+  {{- if .Values.global.Contour.enabled }}
   ingress-class: "contour.ingress.networking.knative.dev"
+  {{- end }}
   _example: |
   {{- .Files.Get "files/network.example" | nindent 4 }}

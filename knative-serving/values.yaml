@@ -1,3 +1,6 @@
+global:
+  Contour:
+    enabled: true
 activator:
   activator:
     image:

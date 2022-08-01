@@ -1,4 +1,4 @@
-{{- if .Values.Contour.enabled }}
+{{- if .Values.global.Contour.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:

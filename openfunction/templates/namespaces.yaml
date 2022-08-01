@@ -1,39 +1,39 @@
-{{- if .Values.Dapr.enabled }}
+{{- if .Values.global.Dapr.enabled }}
 apiVersion: v1
 kind: Namespace
 metadata:
   name: dapr-system
 {{- end }}
 ---
-{{- if .Values.Keda.enabled }}
+{{- if .Values.global.Keda.enabled }}
 apiVersion: v1
 kind: Namespace
 metadata:
   name: keda
 {{- end }}
 ---
-{{- if .Values.KnativeServing.enabled }}
+{{- if .Values.global.KnativeServing.enabled }}
 apiVersion: v1
 kind: Namespace
 metadata:
   name: knative-serving
 {{- end }}
 ---
-{{- if .Values.TektonPipelines.enabled }}
+{{- if .Values.global.TektonPipelines.enabled }}
 apiVersion: v1
 kind: Namespace
 metadata:
   name: tekton-pipelines
 {{- end }}
 ---
-{{- if .Values.ShipwrightBuild.enabled }}
+{{- if .Values.global.ShipwrightBuild.enabled }}
 apiVersion: v1
 kind: Namespace
 metadata:
   name: shipwright-build
 {{- end }}
 ---
-{{- if .Values.Contour.enabled }}
+{{- if .Values.global.Contour.enabled }}
 apiVersion: v1
 kind: Namespace
 metadata:
