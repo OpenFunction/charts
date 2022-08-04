@@ -24,7 +24,7 @@ Kubernetes: `>=v1.20.0-0`
 | https://openfunction.github.io/charts/ | shipwright-build | 0.10.0 | 0.10.0     |
 | https://openfunction.github.io/charts/ | tekton-pipelines | 0.37.2 | 0.37.2     |
 | https://charts.bitnami.com/bitnami | contour | 8.0.4 | 1.21.1     |
-| https://dapr.github.io/helm-charts/ | dapr | 1.8.2 | 1.8.2      |
+| https://dapr.github.io/helm-charts/ | dapr | 1.8.3 | 1.8.3      |
 | https://kedacore.github.io/charts | keda | 2.7.2 | 2.7.1      |
 
 ## Install the Chart

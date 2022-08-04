@@ -33,7 +33,7 @@ maintainers:
     name: wangyifei
 dependencies:
   - name: dapr
-    version: 1.8.2
+    version: 1.8.3
     repository: https://dapr.github.io/helm-charts/
     condition: global.Dapr.enabled
   - name: knative-serving
