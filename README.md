@@ -1,6 +1,6 @@
 # openfunction
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.7.0](https://img.shields.io/badge/AppVersion-0.7.0-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.7.0-rc.0](https://img.shields.io/badge/AppVersion-0.7.0--rc.0-informational?style=flat-square)
 
 A Helm chart for OpenFunction on Kubernetes
 
@@ -67,6 +67,43 @@ To uninstall/delete the `openfunction` release:
 helm uninstall openfunction -n openfunction
 ```
 
+## Upgrading Chart
+
+```shell
+helm upgrade [RELEASE_NAME] openfunction/openfunction -n openfunction
+```
+
+With Helm v3, CRDs created by this chart are not updated by default and should be manually updated.
+Consult also the [Helm Documentation on CRDs](https://helm.sh/docs/chart_best_practices/custom_resource_definitions).
+
+_See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documentation._
+
+### Upgrading an existing Release to a new version
+
+### From OpenFunction v0.6.0 to OpenFunction v0.7.x
+
+There is an incompatible breaking change needing manual actions.
+#### OpenFunction CRDs
+
+```shell
+kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/openfunction.yaml
+```
+
+#### Components CRDs
+> You only need to deal with the components included in the existing Release.
+- knative-serving CRDs
+    ```shell
+    kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/knative-serving.yaml
+    ```
+- shipwright-build CRDs
+    ```shell
+    kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/shipwright-build.yaml
+    ```
+- tekton-pipelines CRDs
+    ```shell
+    kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/tekton-pipelines.yaml
+    ```
+
 ## Values
 
 | Key | Type | Default | Description |
@@ -81,7 +118,7 @@ helm uninstall openfunction -n openfunction
 | controllerManager.kubeRbacProxy.image.repository | string | `"openfunction/kube-rbac-proxy"` |  |
 | controllerManager.kubeRbacProxy.image.tag | string | `"v0.8.0"` |  |
 | controllerManager.openfunction.image.repository | string | `"openfunction/openfunction"` |  |
-| controllerManager.openfunction.image.tag | string | `"latest"` |  |
+| controllerManager.openfunction.image.tag | string | `"v0.7.0-rc.0"` |  |
 | controllerManager.openfunction.resources.limits.cpu | string | `"500m"` |  |
 | controllerManager.openfunction.resources.limits.memory | string | `"500Mi"` |  |
 | controllerManager.openfunction.resources.requests.cpu | string | `"100m"` |  |
