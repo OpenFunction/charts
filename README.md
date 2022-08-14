@@ -107,7 +107,8 @@ Then you'll need to upgrade the new OpenFunction CRDs
 kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/openfunction.yaml
 ```
 
-#### Upgrade components CRDs
+#### Upgrade dependent components CRDs
+You also need to upgrade the dependent components' CRDs
 > You only need to deal with the components included in the existing Release.
 - knative-serving CRDs
     ```shell
