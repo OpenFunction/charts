@@ -82,14 +82,33 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 
 ### From OpenFunction v0.6.0 to OpenFunction v0.7.x
 
-There is an incompatible breaking change needing manual actions.
-#### OpenFunction CRDs
+There is a breaking change when upgrading from v0.6.0 to 0.7.x which requires additional manual operations.
+#### Uninstall the Chart
+
+First, you'll need to uninstall the old `openfunction` release:
+```shell
+helm uninstall openfunction -n openfunction
+```
+
+Confirm that the component namespaces have been deleted, it will take a while:
+```shell
+kubectl get ns -o=jsonpath='{range .items[?(@.metadata.annotations.meta\.helm\.sh/release-name=="openfunction")]}{.metadata.name}: {.status.phase}{"\n"}{end}'
+```
+
+> If the knative-serving namespace is in the terminating state for a long time, try running the following command and remove finalizers:
+```shell
+kubectl edit ingresses.networking.internal.knative.dev -n knative-serving
+```
+
+#### Upgrade OpenFunction CRDs
+Then you'll need to upgrade the new OpenFunction CRDs
 
 ```shell
 kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/openfunction.yaml
 ```
 
-#### Components CRDs
+#### Upgrade dependent components CRDs
+You also need to upgrade the dependent components' CRDs
 > You only need to deal with the components included in the existing Release.
 - knative-serving CRDs
     ```shell
@@ -103,6 +122,12 @@ kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/openfunction
     ```shell
     kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/tekton-pipelines.yaml
     ```
+
+#### Install new chart
+```shell
+helm repo update
+helm install openfunction openfunction/openfunction -n openfunction
+```
 
 ## Values
 
