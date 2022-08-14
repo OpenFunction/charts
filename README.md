@@ -82,7 +82,7 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 
 ### From OpenFunction v0.6.0 to OpenFunction v0.7.x
 
-There is an incompatible breaking change needing manual actions.
+There is a breaking change when upgrading from v0.6.0 to 0.7.x which requires additional manual operations.
 #### Uninstall the Chart
 
 To uninstall/delete the `openfunction` release:
