@@ -101,6 +101,7 @@ kubectl edit ingresses.networking.internal.knative.dev -n knative-serving
 ```
 
 #### Upgrade OpenFunction CRDs
+Then you'll need to upgrade the new OpenFunction CRDs
 
 ```shell
 kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/openfunction.yaml
