@@ -85,7 +85,7 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 There is a breaking change when upgrading from v0.6.0 to 0.7.x which requires additional manual operations.
 #### Uninstall the Chart
 
-To uninstall/delete the `openfunction` release:
+First, you'll need to uninstall the old `openfunction` release:
 ```shell
 helm uninstall openfunction -n openfunction
 ```
