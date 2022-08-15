@@ -33,31 +33,31 @@ Ensure Helm is initialized in your Kubernetes cluster.
 
 For more details on initializing Helm, [read the Helm docs](https://helm.sh/docs/)
 
-1. Add `openfunction.github.io` as an helm repo
+1. Add `openfunction.github.io` as a helm repo
     ```
     helm repo add openfunction https://openfunction.github.io/charts/
     helm repo update
     ```
 
 2. Install the openfunction chart on your cluster in the `openfunction` namespace:
-   * If your environment does not contain any openfunction-dependent components and you want to install all components 
+   * If your environment does not contain any openfunction-dependent components, and you want to install all components 
    directly, You can install openfunction with all dependencies with the following command:
       ```
       kubectl create namespace openfunction
-      helm install openfunction openfunction/openfunction -n openfunction
+      helm install openfunction openfunction/openfunction -n openfunction --version 0.1.0
       ```
-   * If your environment already contains some of the openfunction-dependent components, or if you want to install some
+   * If your environment already contains some openfunction-dependent components, or if you want to install some
    components separately for more flexibility and customizable capabilities. For example, if you already have dapr 
    installed in your environment, You can install openfunction with the following command:
       ```
       kubectl create namespace openfunction
-      helm install openfunction --set Dapr.enabled=false openfunction/openfunction -n openfunction
+      helm install openfunction --set Dapr.enabled=false openfunction/openfunction -n openfunction --version 0.1.0
       ```
 
 ## Verify installation
 
 ```
-kubectl get pods -namespace openfunction
+kubectl get po -n openfunction
 ```
 
 ## Uninstall the Chart
