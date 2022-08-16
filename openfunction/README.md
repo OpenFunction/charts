@@ -1,6 +1,6 @@
 # openfunction
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.7.0-rc.0](https://img.shields.io/badge/AppVersion-0.7.0--rc.0-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.7.0](https://img.shields.io/badge/AppVersion-0.7.0--rc.0-informational?style=flat-square)
 
 A Helm chart for OpenFunction on Kubernetes
 
@@ -82,10 +82,10 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 
 ### From OpenFunction v0.6.0 to OpenFunction v0.7.x
 
-There is an incompatible breaking change needing manual actions.
+There is a breaking change when upgrading from v0.6.0 to 0.7.x which requires additional manual operations.
 #### Uninstall the Chart
 
-To uninstall/delete the `openfunction` release:
+First, you'll need to uninstall the old `openfunction` release:
 ```shell
 helm uninstall openfunction -n openfunction
 ```
@@ -101,12 +101,14 @@ kubectl edit ingresses.networking.internal.knative.dev -n knative-serving
 ```
 
 #### Upgrade OpenFunction CRDs
+Then you'll need to upgrade the new OpenFunction CRDs
 
 ```shell
 kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v0.7.0/openfunction.yaml
 ```
 
-#### Upgrade components CRDs
+#### Upgrade dependent components CRDs
+You also need to upgrade the dependent components' CRDs
 > You only need to deal with the components included in the existing Release.
 - knative-serving CRDs
     ```shell
@@ -141,7 +143,7 @@ helm install openfunction openfunction/openfunction -n openfunction
 | controllerManager.kubeRbacProxy.image.repository | string | `"openfunction/kube-rbac-proxy"` |  |
 | controllerManager.kubeRbacProxy.image.tag | string | `"v0.8.0"` |  |
 | controllerManager.openfunction.image.repository | string | `"openfunction/openfunction"` |  |
-| controllerManager.openfunction.image.tag | string | `"v0.7.0-rc.0"` |  |
+| controllerManager.openfunction.image.tag | string | `"v0.7.0"` |  |
 | controllerManager.openfunction.resources.limits.cpu | string | `"500m"` |  |
 | controllerManager.openfunction.resources.limits.memory | string | `"500Mi"` |  |
 | controllerManager.openfunction.resources.requests.cpu | string | `"100m"` |  |
