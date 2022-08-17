@@ -1,6 +1,6 @@
 # openfunction
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.7.0](https://img.shields.io/badge/AppVersion-0.7.0--rc.0-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.7.0](https://img.shields.io/badge/AppVersion-0.7.0-informational?style=flat-square)
 
 A Helm chart for OpenFunction on Kubernetes
 
@@ -20,7 +20,7 @@ Kubernetes: `>=v1.20.0-0`
 
 | Repository | Name | Version | AppVersion |
 |------------|------|---------|------------|
-| https://openfunction.github.io/charts/ | knative-serving | 1.3.2 | 1.3.1      |
+| https://openfunction.github.io/charts/ | knative-serving | 1.3.2 | 1.3.2      |
 | https://openfunction.github.io/charts/ | shipwright-build | 0.10.0 | 0.10.0     |
 | https://openfunction.github.io/charts/ | tekton-pipelines | 0.37.2 | 0.37.2     |
 | https://charts.bitnami.com/bitnami | contour | 8.0.4 | 1.21.1     |
