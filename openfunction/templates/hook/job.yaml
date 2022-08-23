@@ -18,7 +18,7 @@ spec:
         command:
         - kubectl
         - delete
-        - gateway
+        - gateways.networking.openfunction.io
         - openfunction
         - --ignore-not-found=true
       restartPolicy: Never
