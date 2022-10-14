@@ -40,51 +40,6 @@ entries:
     version: 1.0.1
   openfunction:
   - apiVersion: v2
-    appVersion: 0.7.0-rc.0
-    created: "2022-08-23T08:59:25.2702759+08:00"
-    dependencies:
-    - condition: global.Dapr.enabled
-      name: dapr
-      repository: file://dapr
-      version: 1.8.3
-    - condition: global.KnativeServing.enabled
-      name: knative-serving
-      repository: file://knative-serving
-      version: 1.3.2
-    - condition: global.TektonPipelines.enabled
-      name: tekton-pipelines
-      repository: file://tekton-pipelines
-      version: 0.37.2
-    - condition: global.ShipwrightBuild.enabled
-      name: shipwright-build
-      repository: file://shipwright-build
-      version: 0.10.0
-    - condition: global.Keda.enabled
-      name: keda
-      repository: file://keda
-      version: 2.7.2
-    - condition: global.Contour.enabled
-      name: contour
-      repository: file://contour
-      version: 8.0.4
-    description: A Helm chart for OpenFunction on Kubernetes
-    digest: 57f460176788565e7bdbad175cefa9bce5819565ff1753200f0864ebfebb13eb
-    keywords:
-    - faas
-    - Serverless
-    - Kubernetes
-    kubeVersion: '>=v1.20.0-0'
-    maintainers:
-    - email: wangyifei@kubesphere.io
-      name: wangyifei
-    name: openfunction
-    sources:
-    - https://github.com/OpenFunction/OpenFunction
-    type: application
-    urls:
-    - https://openfunction.github.io/charts/openfunction-v0.7.0-rc.0-v0.2.0.tgz
-    version: 0.2.0
-  - apiVersion: v2
     appVersion: 0.7.0
     created: "2022-08-23T08:59:25.3260406+08:00"
     dependencies:
