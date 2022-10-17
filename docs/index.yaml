@@ -3,7 +3,7 @@ entries:
   knative-serving:
   - apiVersion: v2
     appVersion: 1.3.2
-    created: "2022-08-23T08:59:25.1854969+08:00"
+    created: "2022-10-17T11:19:26.8585584+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: 75cf6ba89b9c59ab2ec3e9469e6d523f51f6a587c7c181911d2566bfa5764835
     keywords:
@@ -22,7 +22,7 @@ entries:
     version: 1.3.2
   - apiVersion: v2
     appVersion: 1.0.1
-    created: "2022-08-23T08:59:25.1732754+08:00"
+    created: "2022-10-17T11:19:26.8560027+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: c3c6dd47616c498ffe87d94812c35a6423ef974fa65daddc22d196986e15284a
     keywords:
@@ -40,8 +40,53 @@ entries:
     version: 1.0.1
   openfunction:
   - apiVersion: v2
+    appVersion: 0.8.0-rc.0
+    created: "2022-10-17T11:19:26.9068372+08:00"
+    dependencies:
+    - condition: global.Dapr.enabled
+      name: dapr
+      repository: file://dapr
+      version: 1.8.3
+    - condition: global.KnativeServing.enabled
+      name: knative-serving
+      repository: file://knative-serving
+      version: 1.3.2
+    - condition: global.TektonPipelines.enabled
+      name: tekton-pipelines
+      repository: file://tekton-pipelines
+      version: 0.37.2
+    - condition: global.ShipwrightBuild.enabled
+      name: shipwright-build
+      repository: file://shipwright-build
+      version: 0.10.0
+    - condition: global.Keda.enabled
+      name: keda
+      repository: file://keda
+      version: 2.7.2
+    - condition: global.Contour.enabled
+      name: contour
+      repository: file://contour
+      version: 8.0.4
+    description: A Helm chart for OpenFunction on Kubernetes
+    digest: ea7af9b5de06a6fd48bccca28b369f6c10f6e4e36b010959102f7e25646cc0b1
+    keywords:
+    - faas
+    - Serverless
+    - Kubernetes
+    kubeVersion: '>=v1.20.0-0'
+    maintainers:
+    - email: wangyifei@kubesphere.io
+      name: wangyifei
+    name: openfunction
+    sources:
+    - https://github.com/OpenFunction/OpenFunction
+    type: application
+    urls:
+    - https://openfunction.github.io/charts/openfunction-v0.8.0-rc.0-v0.3.0-rc.0.tgz
+    version: 0.3.0-rc.0
+  - apiVersion: v2
     appVersion: 0.7.0
-    created: "2022-08-23T08:59:25.3260406+08:00"
+    created: "2022-10-17T11:19:26.8909168+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -86,7 +131,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-08-23T08:59:25.2159127+08:00"
+    created: "2022-10-17T11:19:26.8726493+08:00"
     dependencies:
     - condition: Dapr.enabled
       name: dapr
@@ -132,7 +177,7 @@ entries:
   shipwright-build:
   - apiVersion: v2
     appVersion: 0.10.0
-    created: "2022-08-23T08:59:25.338388+08:00"
+    created: "2022-10-17T11:19:26.910962+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: e0616611a496afcbdd39b630b5ef76e347e9d53186726829acbfa5c7072af6c6
     keywords:
@@ -153,7 +198,7 @@ entries:
     version: 0.10.0
   - apiVersion: v2
     appVersion: 0.6.1
-    created: "2022-08-23T08:59:25.3406355+08:00"
+    created: "2022-10-17T11:19:26.911959+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: 366ca24ad2651910695ac50e165be4fa7c8c635ec2aec5f53a6baca17f3efed0
     keywords:
@@ -174,7 +219,7 @@ entries:
   tekton-pipelines:
   - apiVersion: v2
     appVersion: 0.37.2
-    created: "2022-08-23T08:59:25.3466363+08:00"
+    created: "2022-10-17T11:19:26.9140353+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
     digest: b179a806641d354e92064715f221ee5e1836a84ddefa11bc11c01f4f4bdf8c52
     keywords:
@@ -195,7 +240,7 @@ entries:
     version: 0.37.2
   - apiVersion: v2
     appVersion: 0.30.0
-    created: "2022-08-23T08:59:25.3426346+08:00"
+    created: "2022-10-17T11:19:26.9130427+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
     digest: 4939ec89841370813aa5c00cea5db82733470fb165326d2b75c3f9324d170bac
     keywords:
@@ -213,4 +258,4 @@ entries:
     urls:
     - https://openfunction.github.io/charts/tekton-pipelines-0.30.0.tgz
     version: 0.30.0
-generated: "2022-08-23T08:59:25.1661155+08:00"
+generated: "2022-10-17T11:19:26.8532053+08:00"
