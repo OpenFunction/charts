@@ -1,6 +1,6 @@
 # openfunction
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.7.0](https://img.shields.io/badge/AppVersion-0.7.0-informational?style=flat-square)
+![Version: 0.3.0-rc.0](https://img.shields.io/badge/Version-0.3.0--rc.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.0-rc.0](https://img.shields.io/badge/AppVersion-0.8.0--rc.0-informational?style=flat-square)
 
 A Helm chart for OpenFunction on Kubernetes
 
@@ -33,25 +33,36 @@ Ensure Helm is initialized in your Kubernetes cluster.
 
 For more details on initializing Helm, [read the Helm docs](https://helm.sh/docs/)
 
-1. Add `openfunction.github.io` as a helm repo:
-    ```
-    helm repo add openfunction https://openfunction.github.io/charts/
-    helm repo update
-    ```
+1. Run the following command to add the OpenFunction chart repository first:
+   ```shell
+   helm repo add openfunction https://openfunction.github.io/charts/
+   helm repo update
+   ```
 
-2. Install the `openfunction` chart on your cluster in the `openfunction` namespace:
-   - If your environment does not contain any openfunction-dependent components, and you want to install all components 
-   directly, You can install openfunction with all dependencies with the following command:
-      ```
+2. Then you have several options to setup OpenFunction, you can choose to:
+
+   - Install all components:
+      ```shell
       kubectl create namespace openfunction
       helm install openfunction openfunction/openfunction -n openfunction
       ```
-   - If your environment already contains some openfunction-dependent components, or if you want to install some
-   components separately for more flexibility and customizable capabilities. For example, if you already have `dapr` 
-   installed in your environment, You can install openfunction with the following command:
-      ```
+   
+   - Install Serving only (without build):
+      ```shell
       kubectl create namespace openfunction
-      helm install openfunction --set global.Dapr.enabled=false openfunction/openfunction -n openfunction
+      helm install openfunction --set global.ShipwrightBuild.enabled=false --set global.TektonPipelines.enabled=false openfunction/openfunction -n openfunction
+      ```
+   
+   - Install Knative sync runtime only:
+      ```shell
+      kubectl create namespace openfunction
+      helm install openfunction --set global.Keda.enabled=false openfunction/openfunction -n openfunction
+      ```
+   
+   - Install OpenFunction async runtime only:
+      ```shell
+      kubectl create namespace openfunction
+      helm install openfunction --set global.Contour.enabled=false  --set global.KnativeServing.enabled=false openfunction/openfunction -n openfunction
       ```
 
 ## Verify installation
@@ -70,7 +81,7 @@ helm uninstall openfunction -n openfunction
 ## Upgrading Chart
 
 ```shell
-helm upgrade [RELEASE_NAME] openfunction/openfunction -n openfunction
+helm upgrade [RELEASE_NAME] openfunction/openfunction -n openfunction --no-hooks
 ```
 
 With Helm v3, CRDs created by this chart are not updated by default and should be manually updated.
@@ -79,6 +90,12 @@ Consult also the [Helm Documentation on CRDs](https://helm.sh/docs/chart_best_pr
 _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documentation._
 
 ### Upgrading an existing Release to a new version
+
+### From OpenFunction v0.7.x to OpenFunction v0.8.x
+
+```shell
+helm upgrade openfunction openfunction/openfunction -n openfunction --no-hooks
+```
 
 ### From OpenFunction v0.6.0 to OpenFunction v0.7.x
 
@@ -143,7 +160,7 @@ helm install openfunction openfunction/openfunction -n openfunction
 | controllerManager.kubeRbacProxy.image.repository | string | `"openfunction/kube-rbac-proxy"` |  |
 | controllerManager.kubeRbacProxy.image.tag | string | `"v0.8.0"` |  |
 | controllerManager.openfunction.image.repository | string | `"openfunction/openfunction"` |  |
-| controllerManager.openfunction.image.tag | string | `"v0.7.0"` |  |
+| controllerManager.openfunction.image.tag | string | `"v0.8.0-rc.0"` |  |
 | controllerManager.openfunction.resources.limits.cpu | string | `"500m"` |  |
 | controllerManager.openfunction.resources.limits.memory | string | `"500Mi"` |  |
 | controllerManager.openfunction.resources.requests.cpu | string | `"100m"` |  |

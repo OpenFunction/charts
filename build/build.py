@@ -18,15 +18,12 @@ class Build(object):
     local_charts = {"knative-serving", "tekton-pipelines", "shipwright-build"}
     skipped_charts = {"contour"}
 
-    def __init__(self, major: int = 0, minor: int = 2, patch: int = 0, region_cn: bool = False):
+    def __init__(self, version, region_cn: bool = False):
         self.src_dir = os.path.join(self.root_dir, "openfunction")
         self.dis_dir = os.path.join(self.root_dir, "dist", "openfunction")
         self.charts_dir = os.path.join(self.dis_dir, "charts")
         self.region_cn = region_cn
-        self.major = major
-        self.minor = minor
-        self.patch = patch
-        self.version = f"{self.major}.{self.minor}.{self.patch}"
+        self.version = version
 
     def prepare(self):
         if not os.path.exists(self.src_dir):
@@ -130,5 +127,5 @@ class Build(object):
 
 
 if __name__ == '__main__':
-    builder = Build(region_cn=True)
+    builder = Build(version="0.3.0-rc.0", region_cn=True)
     builder.run()
