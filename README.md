@@ -1,6 +1,6 @@
 # openfunction
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.0](https://img.shields.io/badge/AppVersion-0.8.0-informational?style=flat-square)
+![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.0](https://img.shields.io/badge/AppVersion-0.8.0-informational?style=flat-square)
 
 A Helm chart for OpenFunction on Kubernetes
 
@@ -150,9 +150,12 @@ helm install openfunction openfunction/openfunction -n openfunction
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| config.daprProxyImage | string | `"openfunction/dapr-proxy:v0.1.1"` |  |
+| config.eventsourceHandlerImage | string | `"openfunction/eventsource-handler:v4"` |  |
 | config.knativeServingConfigFeaturesName | string | `"config-features"` |  |
 | config.knativeServingNamespace | string | `"knative-serving"` |  |
 | config.pluginsTracing | string | `"enabled: false\nprovider:\n  name: \"skywalking\"\n  oapServer: \"localhost:xxx\"\ntags:\n  func: function-with-tracing\n  layer: faas\n  tag1: value1\n  tag2: value2\nbaggage:\n  key: sw8-correlation\n  value: \"base64(string key):base64(string value),base64(string key2):base64(string value2)\"\n"` |  |
+| config.triggerHandlerImage | string | `"openfunction/trigger-handler:v4"` |  |
 | contour.configInline.gateway.controllerName | string | `"projectcontour.io/projectcontour/contour"` |  |
 | contour.contour.ingressClass.name | string | `"contour"` |  |
 | contour.fullnameOverride | string | `"contour"` |  |
