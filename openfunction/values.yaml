@@ -15,6 +15,9 @@ global:
 config:
   knativeServingConfigFeaturesName: config-features
   knativeServingNamespace: knative-serving
+  eventsourceHandlerImage: openfunction/eventsource-handler:v4
+  triggerHandlerImage: openfunction/trigger-handler:v4
+  daprProxyImage: openfunction/dapr-proxy:v0.1.1
   pluginsTracing: |
     enabled: false
     provider:
