@@ -1,4 +1,4 @@
-apiVersion: autoscaling/v2beta1
+apiVersion: {{ include "common.capabilities.hpa.apiVersion" . }}
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "tekton-pipelines.fullname" . }}-webhook
@@ -16,7 +16,9 @@ spec:
   metrics:
   - resource:
       name: cpu
-      targetAverageUtilization: 100
+      target:
+        averageUtilization: 100
+        type: Utilization
     type: Resource
   minReplicas: 1
   scaleTargetRef:
