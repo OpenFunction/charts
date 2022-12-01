@@ -1,6 +1,6 @@
 # openfunction
 
-![Version: 0.4.0-rc.0](https://img.shields.io/badge/Version-0.4.0--rc.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.1-rc.0](https://img.shields.io/badge/AppVersion-0.8.1--rc.0-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.1](https://img.shields.io/badge/AppVersion-0.8.1-informational?style=flat-square)
 
 A Helm chart for OpenFunction on Kubernetes
 
@@ -163,7 +163,7 @@ helm install openfunction openfunction/openfunction -n openfunction
 | controllerManager.kubeRbacProxy.image.repository | string | `"openfunction/kube-rbac-proxy"` |  |
 | controllerManager.kubeRbacProxy.image.tag | string | `"v0.8.0"` |  |
 | controllerManager.openfunction.image.repository | string | `"openfunction/openfunction"` |  |
-| controllerManager.openfunction.image.tag | string | `"v0.8.1-rc.0"` |  |
+| controllerManager.openfunction.image.tag | string | `"v0.8.1"` |  |
 | controllerManager.openfunction.resources.limits.cpu | string | `"500m"` |  |
 | controllerManager.openfunction.resources.limits.memory | string | `"500Mi"` |  |
 | controllerManager.openfunction.resources.requests.cpu | string | `"100m"` |  |
