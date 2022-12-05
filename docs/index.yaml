@@ -3,7 +3,7 @@ entries:
   knative-serving:
   - apiVersion: v2
     appVersion: 1.3.2
-    created: "2022-12-01T10:30:16.2475508+08:00"
+    created: "2022-12-05T16:24:42.3683806+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: 134c3b538f96c25862bf85e72e9bbf0fe12dc3497f1e7f47383ccb902a1abd56
     keywords:
@@ -22,7 +22,7 @@ entries:
     version: 1.3.2
   - apiVersion: v2
     appVersion: 1.0.1
-    created: "2022-12-01T10:30:16.2283882+08:00"
+    created: "2022-12-05T16:24:42.1460947+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: c3c6dd47616c498ffe87d94812c35a6423ef974fa65daddc22d196986e15284a
     keywords:
@@ -41,7 +41,7 @@ entries:
   openfunction:
   - apiVersion: v2
     appVersion: 0.8.1
-    created: "2022-12-01T10:30:16.4905046+08:00"
+    created: "2022-12-05T16:24:42.5829411+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -68,7 +68,7 @@ entries:
       repository: file://contour
       version: 8.0.4
     description: A Helm chart for OpenFunction on Kubernetes
-    digest: d27e8f094a61778b544e87ba4d394fd8a5e306feb6f1fdd87d6f6756af5e98c3
+    digest: c2fcf94bb7a345a5b4a81fb23d56f606415467a2d5f81e8fcddfa66b08d83b9f
     keywords:
     - faas
     - Serverless
@@ -86,7 +86,7 @@ entries:
     version: 0.4.0
   - apiVersion: v2
     appVersion: 0.8.1-rc.0
-    created: "2022-12-01T10:30:16.4685706+08:00"
+    created: "2022-12-05T16:24:42.5622196+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -131,7 +131,7 @@ entries:
     version: 0.4.0-rc.0
   - apiVersion: v2
     appVersion: 0.8.0
-    created: "2022-12-01T10:30:16.4430939+08:00"
+    created: "2022-12-05T16:24:42.5337784+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -176,7 +176,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: 0.8.0
-    created: "2022-12-01T10:30:16.364655+08:00"
+    created: "2022-12-05T16:24:42.4857507+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -221,7 +221,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: 0.8.0-rc.0
-    created: "2022-12-01T10:30:16.3361345+08:00"
+    created: "2022-12-05T16:24:42.4579356+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -266,7 +266,7 @@ entries:
     version: 0.3.0-rc.0
   - apiVersion: v2
     appVersion: 0.7.0
-    created: "2022-12-01T10:30:16.3087572+08:00"
+    created: "2022-12-05T16:24:42.4252966+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -311,7 +311,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2022-12-01T10:30:16.2746074+08:00"
+    created: "2022-12-05T16:24:42.3933776+08:00"
     dependencies:
     - condition: Dapr.enabled
       name: dapr
@@ -357,7 +357,7 @@ entries:
   shipwright-build:
   - apiVersion: v2
     appVersion: 0.10.0
-    created: "2022-12-01T10:30:16.5001755+08:00"
+    created: "2022-12-05T16:24:42.5943979+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: 06820ce8fe0088b3f95086ce38c5aff3069b691d2d5f1210e5bf77e9632a8611
     keywords:
@@ -378,7 +378,7 @@ entries:
     version: 0.10.0
   - apiVersion: v2
     appVersion: 0.6.1
-    created: "2022-12-01T10:30:16.5087252+08:00"
+    created: "2022-12-05T16:24:42.599895+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: 366ca24ad2651910695ac50e165be4fa7c8c635ec2aec5f53a6baca17f3efed0
     keywords:
@@ -399,9 +399,9 @@ entries:
   tekton-pipelines:
   - apiVersion: v2
     appVersion: 0.37.2
-    created: "2022-12-01T10:30:16.5305158+08:00"
+    created: "2022-12-05T16:24:42.6083939+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
-    digest: 17111d5325ae85fcb08be81446c4686d00ddce0674ffeb3864ab7c32cef2347a
+    digest: 90fe5c147a410aa1c26812435704cbcf1891ce2446a8e5f8a3ff62449f736360
     keywords:
     - Continuous delivery
     - Continuous deployment
@@ -420,7 +420,7 @@ entries:
     version: 0.37.2
   - apiVersion: v2
     appVersion: 0.30.0
-    created: "2022-12-01T10:30:16.5179802+08:00"
+    created: "2022-12-05T16:24:42.6073958+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
     digest: 4939ec89841370813aa5c00cea5db82733470fb165326d2b75c3f9324d170bac
     keywords:
@@ -438,4 +438,4 @@ entries:
     urls:
     - https://openfunction.github.io/charts/tekton-pipelines-0.30.0.tgz
     version: 0.30.0
-generated: "2022-12-01T10:30:16.2059843+08:00"
+generated: "2022-12-05T16:24:41.838065+08:00"
