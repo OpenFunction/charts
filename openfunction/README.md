@@ -1,6 +1,6 @@
 # openfunction
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.0](https://img.shields.io/badge/AppVersion-0.8.0-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.1](https://img.shields.io/badge/AppVersion-0.8.1-informational?style=flat-square)
 
 A Helm chart for OpenFunction on Kubernetes
 
@@ -20,12 +20,12 @@ Kubernetes: `>=v1.20.0-0`
 
 | Repository | Name | Version | AppVersion |
 |------------|------|---------|------------|
-| https://openfunction.github.io/charts/ | knative-serving | 1.3.2 | 1.3.2      |
-| https://openfunction.github.io/charts/ | shipwright-build | 0.10.0 | 0.10.0     |
-| https://openfunction.github.io/charts/ | tekton-pipelines | 0.37.2 | 0.37.2     |
-| https://charts.bitnami.com/bitnami | contour | 8.0.4 | 1.21.1     |
-| https://dapr.github.io/helm-charts/ | dapr | 1.8.3 | 1.8.3      |
-| https://kedacore.github.io/charts | keda | 2.7.2 | 2.7.1      |
+| https://openfunction.github.io/charts/ | knative-serving | 1.3.2   | 1.3.2      |
+| https://openfunction.github.io/charts/ | shipwright-build | 0.10.0  | 0.10.0     |
+| https://openfunction.github.io/charts/ | tekton-pipelines | 0.37.2  | 0.37.2     |
+| https://charts.bitnami.com/bitnami | contour | 8.0.4   | 1.21.1     |
+| https://dapr.github.io/helm-charts/ | dapr | 1.8.3   | 1.8.3      |
+| https://kedacore.github.io/charts | keda | 2.8.2   | 2.8.1      |
 
 ## Install the Chart
 
@@ -163,7 +163,7 @@ helm install openfunction openfunction/openfunction -n openfunction
 | controllerManager.kubeRbacProxy.image.repository | string | `"openfunction/kube-rbac-proxy"` |  |
 | controllerManager.kubeRbacProxy.image.tag | string | `"v0.8.0"` |  |
 | controllerManager.openfunction.image.repository | string | `"openfunction/openfunction"` |  |
-| controllerManager.openfunction.image.tag | string | `"v0.8.0"` |  |
+| controllerManager.openfunction.image.tag | string | `"v0.8.1"` |  |
 | controllerManager.openfunction.resources.limits.cpu | string | `"500m"` |  |
 | controllerManager.openfunction.resources.limits.memory | string | `"500Mi"` |  |
 | controllerManager.openfunction.resources.requests.cpu | string | `"100m"` |  |
@@ -176,9 +176,9 @@ helm install openfunction openfunction/openfunction -n openfunction
 | global.ShipwrightBuild.enabled | bool | `true` |  |
 | global.TektonPipelines.enabled | bool | `true` |  |
 | keda.image.keda.repository | string | `"openfunction/keda"` |  |
-| keda.image.keda.tag | string | `"2.7.1"` |  |
+| keda.image.keda.tag | string | `"2.8.1"` |  |
 | keda.image.metricsApiServer.repository | string | `"openfunction/keda-metrics-apiserver"` |  |
-| keda.image.metricsApiServer.tag | string | `"2.7.1"` |  |
+| keda.image.metricsApiServer.tag | string | `"2.8.1"` |  |
 | knative-serving.activator.activator.image.repository | string | `"openfunction/knative.dev-serving-cmd-activator"` |  |
 | knative-serving.autoscaler.autoscaler.image.repository | string | `"openfunction/knative.dev-serving-cmd-autoscaler"` |  |
 | knative-serving.configDeployment.queueSidecarImage.repository | string | `"openfunction/knative.dev-serving-cmd-queue"` |  |

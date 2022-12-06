@@ -39,7 +39,7 @@ controllerManager:
   openfunction:
     image:
       repository: openfunction/openfunction
-      tag: v0.8.0
+      tag: v0.8.1
     resources:
       limits:
         cpu: 500m
@@ -159,11 +159,11 @@ keda:
     keda:
       repository: openfunction/keda
       # Allows people to override tag if they don't want to use the app version
-      tag: 2.7.1
+      tag: 2.8.1
     metricsApiServer:
       repository: openfunction/keda-metrics-apiserver
       # Allows people to override tag if they don't want to use the app version
-      tag: 2.7.1
+      tag: 2.8.1
 contour:
   fullnameOverride: "contour"
   namespaceOverride: "projectcontour"
