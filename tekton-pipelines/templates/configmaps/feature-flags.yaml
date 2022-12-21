@@ -3,8 +3,6 @@ kind: ConfigMap
 metadata:
   name: feature-flags
   labels:
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
 data:
   disable-affinity-assistant: {{ .Values.featureFlags.disableAffinityAssistant | quote }}

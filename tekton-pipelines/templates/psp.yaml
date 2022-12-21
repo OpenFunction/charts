@@ -4,8 +4,6 @@ kind: PodSecurityPolicy
 metadata:
   name: tekton-pipelines
   labels:
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
   annotations:
     apparmor.security.beta.kubernetes.io/allowedProfileNames: runtime/default

@@ -3,8 +3,6 @@ kind: ClusterRole
 metadata:
   name: tekton-aggregate-edit
   labels:
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
     rbac.authorization.k8s.io/aggregate-to-admin: "true"
     rbac.authorization.k8s.io/aggregate-to-edit: "true"
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
@@ -33,8 +31,6 @@ kind: ClusterRole
 metadata:
   name: tekton-aggregate-view
   labels:
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
     rbac.authorization.k8s.io/aggregate-to-view: "true"
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
 rules:
