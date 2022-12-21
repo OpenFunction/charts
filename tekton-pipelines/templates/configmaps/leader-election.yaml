@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: config-leader-election-tekton
+  name: config-leader-election
   labels:
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
 data:

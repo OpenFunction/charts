@@ -16,12 +16,12 @@ rules:
 - apiGroups:
   - ""
   resourceNames:
-  - config-logging-tekton
-  - config-observability-tekton
+  - config-logging
+  - config-observability
   - config-artifact-bucket
   - config-artifact-pvc
   - feature-flags
-  - config-leader-election-tekton
+  - config-leader-election
   - config-registry-cert
   resources:
   - configmaps

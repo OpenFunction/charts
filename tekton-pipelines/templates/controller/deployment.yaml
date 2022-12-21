@@ -60,11 +60,11 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: CONFIG_DEFAULTS_NAME
-              value: config-defaults-tekton
+              value: config-defaults
             - name: CONFIG_LOGGING_NAME
-              value: config-logging-tekton
+              value: config-logging
             - name: CONFIG_OBSERVABILITY_NAME
-              value: config-observability-tekton
+              value: config-observability
             - name: CONFIG_ARTIFACT_BUCKET_NAME
               value: config-artifact-bucket
             - name: CONFIG_ARTIFACT_PVC_NAME
@@ -72,7 +72,7 @@ spec:
             - name: CONFIG_FEATURE_FLAGS_NAME
               value: feature-flags
             - name: CONFIG_LEADERELECTION_NAME
-              value: config-leader-election-tekton
+              value: config-leader-election
             - name: SSL_CERT_FILE
               value: /etc/config-registry-cert/cert
             - name: SSL_CERT_DIR
@@ -127,7 +127,7 @@ spec:
       serviceAccountName: {{ include "tekton-pipelines.fullname" . }}-controller
       volumes:
         - configMap:
-            name: config-logging-tekton
+            name: config-logging
           name: config-logging
         - configMap:
             name: config-registry-cert

@@ -49,11 +49,11 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: CONFIG_LOGGING_NAME
-          value: config-logging-tekton
+          value: config-logging
         - name: CONFIG_OBSERVABILITY_NAME
-          value: config-observability-tekton
+          value: config-observability
         - name: CONFIG_LEADERELECTION_NAME
-          value: config-leader-election-tekton
+          value: config-leader-election
         - name: CONFIG_FEATURE_FLAGS_NAME
           value: feature-flags
         - name: WEBHOOK_SERVICE_NAME

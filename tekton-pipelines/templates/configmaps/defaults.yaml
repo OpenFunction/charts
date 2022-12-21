@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: config-defaults-tekton
+  name: config-defaults
   labels:
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
 data:
