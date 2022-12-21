@@ -3,7 +3,6 @@ kind: Deployment
 metadata:
   name: {{ include "openfunction.fullname" . }}-controller-manager
   labels:
-    app.kubernetes.io/name: openfunction-controller-manager
     control-plane: controller-manager
   {{- include "openfunction.labels" . | nindent 4 }}
 spec:

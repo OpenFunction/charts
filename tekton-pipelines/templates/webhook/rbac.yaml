@@ -16,9 +16,9 @@ rules:
 - apiGroups:
   - ""
   resourceNames:
-  - config-logging
-  - config-observability
-  - config-leader-election
+  - config-logging-tekton
+  - config-observability-tekton
+  - config-leader-election-tekton
   - feature-flags
   resources:
   - configmaps
@@ -34,7 +34,7 @@ rules:
 - apiGroups:
   - ""
   resourceNames:
-  - webhook-certs
+  - webhook-certs-tekton
   resources:
   - secrets
   verbs:
