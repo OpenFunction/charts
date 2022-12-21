@@ -4,10 +4,6 @@ metadata:
   name: {{ include "tekton-pipelines.fullname" . }}-controller
   labels:
     app.kubernetes.io/component: controller
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/name: controller
-    app.kubernetes.io/part-of: tekton-pipelines
-    app.kubernetes.io/version: v0.37.2
     pipeline.tekton.dev/release: v0.37.2
     version: v0.37.2
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
@@ -16,19 +12,12 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/component: controller
-      app.kubernetes.io/instance: default
-      app.kubernetes.io/name: controller
-      app.kubernetes.io/part-of: tekton-pipelines
     {{- include "tekton-pipelines.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
         app: tekton-pipelines-controller
         app.kubernetes.io/component: controller
-        app.kubernetes.io/instance: default
-        app.kubernetes.io/name: controller
-        app.kubernetes.io/part-of: tekton-pipelines
-        app.kubernetes.io/version: v0.37.2
         pipeline.tekton.dev/release: v0.37.2
         version: v0.37.2
       {{- include "tekton-pipelines.selectorLabels" . | nindent 8 }}
