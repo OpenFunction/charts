@@ -14,4 +14,4 @@ spec:
     app.kubernetes.io/component: controller
   {{- include "tekton-pipelines.selectorLabels" . | nindent 4 }}
   ports:
-	{{- .Values.controller.ports | toYaml | nindent 2 -}}
+    {{- .Values.controller.ports | toYaml | nindent 2 -}}
