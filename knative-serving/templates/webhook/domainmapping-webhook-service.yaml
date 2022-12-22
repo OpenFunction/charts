@@ -4,8 +4,6 @@ metadata:
   name: domainmapping-webhook
   labels:
     app.kubernetes.io/component: domain-mapping
-    app.kubernetes.io/name: knative-serving
-    app.kubernetes.io/version: 1.3.2
     role: domainmapping-webhook
     serving.knative.dev/release: v1.3.2
   {{- include "knative-serving.labels" . | nindent 4 }}

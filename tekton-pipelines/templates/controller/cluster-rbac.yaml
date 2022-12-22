@@ -4,8 +4,6 @@ metadata:
   name: {{ include "tekton-pipelines.fullname" . }}-controller-cluster-access
   labels:
     app.kubernetes.io/component: controller
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
 rules:
 - apiGroups:
@@ -73,8 +71,6 @@ metadata:
   name: {{ include "tekton-pipelines.fullname" . }}-controller-tenant-access
   labels:
     app.kubernetes.io/component: controller
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
 rules:
 - apiGroups:
@@ -138,8 +134,6 @@ metadata:
   name: {{ include "tekton-pipelines.fullname" . }}-controller-cluster-access
   labels:
     app.kubernetes.io/component: controller
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -156,8 +150,6 @@ metadata:
   name: {{ include "tekton-pipelines.fullname" . }}-controller-tenant-access
   labels:
     app.kubernetes.io/component: controller
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
   {{- include "tekton-pipelines.labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io

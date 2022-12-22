@@ -3,8 +3,6 @@ kind: ClusterRole
 metadata:
   name: knative-serving-podspecable-binding
   labels:
-    app.kubernetes.io/name: knative-serving
-    app.kubernetes.io/version: 1.3.2
     duck.knative.dev/podspecable: "true"
     serving.knative.dev/release: v1.3.2
   {{- include "knative-serving.labels" . | nindent 4 }}

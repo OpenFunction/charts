@@ -3,6 +3,4 @@ kind: ConfigMap
 metadata:
   name: config-artifact-pvc
   labels:
-    app.kubernetes.io/instance: default
-    app.kubernetes.io/part-of: tekton-pipelines
   {{- include "tekton-pipelines.labels" . | nindent 4 }}

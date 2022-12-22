@@ -38,15 +38,15 @@ dependencies:
     condition: global.Dapr.enabled
   - name: knative-serving
     version: 1.3.2
-    repository: "file://charts/knative-serving"
+    repository: "file://../knative-serving"
     condition: global.KnativeServing.enabled
   - name: tekton-pipelines
     version: 0.37.2
-    repository: "file://charts/tekton-pipelines"
+    repository: "file://../tekton-pipelines"
     condition: global.TektonPipelines.enabled
   - name: shipwright-build
     version: 0.10.0
-    repository: "file://charts/shipwright-build"
+    repository: "file://../shipwright-build"
     condition: global.ShipwrightBuild.enabled
   - name: keda
     version: 2.8.2
