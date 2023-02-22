@@ -175,7 +175,7 @@ contour:
       controllerName: "projectcontour.io/projectcontour/contour"
 
 revisionController:
-  enable: true
+  enable: false
   image:
     repository: openfunction/revision-controller
     tag: v1.0.0

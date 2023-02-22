@@ -222,7 +222,7 @@ helm install openfunction openfunction/openfunction -n openfunction
 | webhookService.ports[0].port | int | `443` |  |
 | webhookService.ports[0].targetPort | int | `9443` |  |
 | webhookService.type | string | `"ClusterIP"` |  |
-| revisionController.enable | bool | `true` |  |
+| revisionController.enable | bool | `false` |  |
 | revisionController.image.repository | string | `openfunction/revision-controller` |  |
 | revisionController.image.tag | string | `v1.0.0` |  |
 | revisionController.image.pullPolicy | string | `IfNotPresent` |  |
