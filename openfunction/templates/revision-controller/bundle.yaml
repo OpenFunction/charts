@@ -1,0 +1,171 @@
+{{- if .Values.revisionController.enable -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "openfunction.fullname" . }}-revision-controller
+  labels:
+  {{- include "openfunction.labels" . | nindent 4 }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "openfunction.fullname" . }}-revision-controller-leader-election-role
+  labels:
+  {{- include "openfunction.labels" . | nindent 4 }}
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - configmaps
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - coordination.k8s.io
+    resources:
+      - leases
+    verbs:
+      - get
+      - list
+      - watch
+      - create
+      - update
+      - patch
+      - delete
+  - apiGroups:
+      - ""
+    resources:
+      - events
+    verbs:
+      - create
+      - patch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "openfunction.fullname" . }}-revision-controller-role
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - secrets
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - core.openfunction.io
+    resources:
+      - functions
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - core.openfunction.io
+    resources:
+      - functions/status
+    verbs:
+      - get
+      - patch
+      - update
+  - apiGroups:
+      - authentication.k8s.io
+    resources:
+      - tokenreviews
+    verbs:
+      - create
+  - apiGroups:
+      - authorization.k8s.io
+    resources:
+      - subjectaccessreviews
+    verbs:
+      - create
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "openfunction.fullname" . }}-revision-controller-leader-election-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "openfunction.fullname" . }}-revision-controller-leader-election-role
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "openfunction.fullname" . }}-revision-controller
+    namespace: '{{ .Release.Namespace }}'
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "openfunction.fullname" . }}-revision-controller-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "openfunction.fullname" . }}-revision-controller-role
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "openfunction.fullname" . }}-revision-controller
+    namespace: '{{ .Release.Namespace }}'
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+  {{- include "openfunction.labels" . | nindent 4 }}
+  name: {{ include "openfunction.fullname" . }}-revision-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      control-plane: revision-controller
+      {{- include "openfunction.labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "openfunction.labels" . | nindent 8 }}
+        control-plane: revision-controller
+    spec:
+      containers:
+        - args:
+            - --health-probe-bind-address=:8081
+            - --metrics-bind-address=127.0.0.1:8080
+            - --leader-elect
+            - --zap-log-level=info
+          command:
+            - /revision-controller
+          image: {{ .Values.revisionController.image.repository }}:{{ .Values.revisionController.image.tag }}
+          imagePullPolicy: {{ .Values.revisionController.image.pullPolicy }}
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8081
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          name: revision-controller
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            limits:
+              cpu: 500m
+              memory: 500Mi
+            requests:
+              cpu: 100m
+              memory: 20Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+      securityContext:
+        runAsNonRoot: true
+      serviceAccountName: {{ include "openfunction.fullname" . }}-revision-controller
+      terminationGracePeriodSeconds: 10
+
+{{- end }}
