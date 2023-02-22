@@ -173,3 +173,10 @@ contour:
   configInline:
     gateway:
       controllerName: "projectcontour.io/projectcontour/contour"
+
+revisionController:
+  enable: false
+  image:
+    repository: openfunction/revision-controller
+    tag: v1.0.0
+    pullPolicy: IfNotPresent
