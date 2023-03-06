@@ -10,6 +10,7 @@ metadata:
     knative.dev/example-checksum: d9e300ba
 data:
   kubernetes.podspec-fieldref: "enabled"
+  kubernetes.podspec-runtimeclassname: "enabled"
   _example: |-
     ################################
     #                              #

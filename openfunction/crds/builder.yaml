@@ -9,244 +9,155 @@ spec:
     listKind: BuilderList
     plural: builders
     shortNames:
-    - fb
+      - fb
     singular: builder
   scope: Namespaced
   versions:
-  - additionalPrinterColumns:
-    - jsonPath: .status.phase
-      name: Phase
-      type: string
-    - jsonPath: .status.state
-      name: State
-      type: string
-    - jsonPath: .status.reason
-      name: Reason
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
-    name: v1alpha2
-    schema:
-      openAPIV3Schema:
-        properties:
-          apiVersion:
-            type: string
-          kind:
-            type: string
-          metadata:
-            type: object
-          spec:
-            properties:
-              builder:
-                type: string
-              builderCredentials:
-                properties:
-                  name:
-                    type: string
-                type: object
-              dockerfile:
-                type: string
-              env:
-                additionalProperties:
+    - additionalPrinterColumns:
+        - jsonPath: .status.phase
+          name: Phase
+          type: string
+        - jsonPath: .status.state
+          name: State
+          type: string
+        - jsonPath: .status.reason
+          name: Reason
+          type: string
+        - jsonPath: .metadata.creationTimestamp
+          name: Age
+          type: date
+      name: v1beta1
+      schema:
+        openAPIV3Schema:
+          properties:
+            apiVersion:
+              type: string
+            kind:
+              type: string
+            metadata:
+              type: object
+            spec:
+              properties:
+                builder:
                   type: string
-                type: object
-              image:
-                type: string
-              imageCredentials:
-                properties:
-                  name:
-                    type: string
-                type: object
-              params:
-                additionalProperties:
+                builderCredentials:
+                  properties:
+                    name:
+                      type: string
+                  type: object
+                dockerfile:
                   type: string
-                type: object
-              port:
-                format: int32
-                type: integer
-              shipwright:
-                properties:
-                  strategy:
+                env:
+                  additionalProperties:
+                    type: string
+                  type: object
+                image:
+                  type: string
+                imageCredentials:
+                  properties:
+                    name:
+                      type: string
+                  type: object
+                params:
+                  additionalProperties:
+                    type: string
+                  type: object
+                port:
+                  format: int32
+                  type: integer
+                shipwright:
+                  properties:
+                    strategy:
+                      properties:
+                        kind:
+                          type: string
+                        name:
+                          type: string
+                      required:
+                        - name
+                      type: object
+                    timeout:
+                      format: duration
+                      type: string
+                  type: object
+                srcRepo:
+                  properties:
+                    bundleContainer:
+                      properties:
+                        image:
+                          type: string
+                      required:
+                        - image
+                      type: object
+                    credentials:
+                      properties:
+                        name:
+                          type: string
+                      type: object
+                    revision:
+                      type: string
+                    sourceSubPath:
+                      type: string
+                    url:
+                      type: string
+                  type: object
+                state:
+                  type: string
+                timeout:
+                  type: string
+              required:
+                - image
+                - srcRepo
+              type: object
+            status:
+              properties:
+                output:
+                  properties:
+                    digest:
+                      type: string
+                    size:
+                      format: int64
+                      type: integer
+                  type: object
+                phase:
+                  type: string
+                reason:
+                  type: string
+                resourceRef:
+                  additionalProperties:
+                    type: string
+                  type: object
+                sources:
+                  items:
                     properties:
-                      kind:
-                        type: string
+                      bundle:
+                        properties:
+                          digest:
+                            type: string
+                        type: object
+                      git:
+                        properties:
+                          branchName:
+                            type: string
+                          commitAuthor:
+                            type: string
+                          commitSha:
+                            type: string
+                        type: object
                       name:
                         type: string
                     required:
-                    - name
+                      - name
                     type: object
-                  timeout:
-                    format: duration
-                    type: string
-                type: object
-              srcRepo:
-                properties:
-                  credentials:
-                    properties:
-                      name:
-                        type: string
-                    type: object
-                  revision:
-                    type: string
-                  sourceSubPath:
-                    type: string
-                  url:
-                    type: string
-                required:
-                - url
-                type: object
-              state:
-                type: string
-              timeout:
-                type: string
-            required:
-            - image
-            - srcRepo
-            type: object
-          status:
-            properties:
-              output:
-                properties:
-                  digest:
-                    type: string
-                  size:
-                    format: int64
-                    type: integer
-                type: object
-              phase:
-                type: string
-              reason:
-                type: string
-              resourceRef:
-                additionalProperties:
+                  type: array
+                state:
                   type: string
-                type: object
-              state:
-                type: string
-            type: object
-        type: object
-    served: true
-    storage: false
-    subresources:
-      status: {}
-  - additionalPrinterColumns:
-    - jsonPath: .status.phase
-      name: Phase
-      type: string
-    - jsonPath: .status.state
-      name: State
-      type: string
-    - jsonPath: .status.reason
-      name: Reason
-      type: string
-    - jsonPath: .metadata.creationTimestamp
-      name: Age
-      type: date
-    name: v1beta1
-    schema:
-      openAPIV3Schema:
-        properties:
-          apiVersion:
-            type: string
-          kind:
-            type: string
-          metadata:
-            type: object
-          spec:
-            properties:
-              builder:
-                type: string
-              builderCredentials:
-                properties:
-                  name:
-                    type: string
-                type: object
-              dockerfile:
-                type: string
-              env:
-                additionalProperties:
-                  type: string
-                type: object
-              image:
-                type: string
-              imageCredentials:
-                properties:
-                  name:
-                    type: string
-                type: object
-              params:
-                additionalProperties:
-                  type: string
-                type: object
-              port:
-                format: int32
-                type: integer
-              shipwright:
-                properties:
-                  strategy:
-                    properties:
-                      kind:
-                        type: string
-                      name:
-                        type: string
-                    required:
-                    - name
-                    type: object
-                  timeout:
-                    format: duration
-                    type: string
-                type: object
-              srcRepo:
-                properties:
-                  credentials:
-                    properties:
-                      name:
-                        type: string
-                    type: object
-                  revision:
-                    type: string
-                  sourceSubPath:
-                    type: string
-                  url:
-                    type: string
-                required:
-                - url
-                type: object
-              state:
-                type: string
-              timeout:
-                type: string
-            required:
-            - image
-            - srcRepo
-            type: object
-          status:
-            properties:
-              output:
-                properties:
-                  digest:
-                    type: string
-                  size:
-                    format: int64
-                    type: integer
-                type: object
-              phase:
-                type: string
-              reason:
-                type: string
-              resourceRef:
-                additionalProperties:
-                  type: string
-                type: object
-              state:
-                type: string
-            type: object
-        type: object
-    served: true
-    storage: true
-    subresources:
-      status: {}
+              type: object
+          type: object
+      served: true
+      storage: true
+      subresources:
+        status: {}
 status:
   acceptedNames:
     kind: ""
