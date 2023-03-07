@@ -42,9 +42,10 @@ class Build(object):
         os.chdir(self.charts_dir)
         for file in os.listdir(self.charts_dir):
             file_path = os.path.join(self.charts_dir, file)
+            print(f"pull and tar {file_path}")
             if os.path.splitext(file)[1] == ".tgz":
                 subprocess.check_call(["tar", "-xf", file_path])
-                subprocess.check_call(["rm", file_path])
+                os.remove(file_path)
 
     def process_charts(self):
         for chart_name in os.listdir(self.charts_dir):
@@ -127,5 +128,5 @@ class Build(object):
 
 
 if __name__ == '__main__':
-    builder = Build(version="0.4.0", region_cn=True)
+    builder = Build(version="0.5.0-rc.0", region_cn=True)
     builder.run()

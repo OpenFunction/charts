@@ -1,6 +1,6 @@
 # openfunction
 
-![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.8.1](https://img.shields.io/badge/AppVersion-0.8.1-informational?style=flat-square)
+![Version: 0.5.0-rc.0](https://img.shields.io/badge/Version-0.5.0--rc.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0-rc.0](https://img.shields.io/badge/AppVersion-1.0.0--rc.0-informational?style=flat-square)
 
 A Helm chart for OpenFunction on Kubernetes
 
@@ -41,29 +41,29 @@ For more details on initializing Helm, [read the Helm docs](https://helm.sh/docs
 
 2. Then you have several options to setup OpenFunction, you can choose to:
 
-   - Install all components:
-      ```shell
-      kubectl create namespace openfunction
-      helm install openfunction openfunction/openfunction -n openfunction
-      ```
-   
-   - Install Serving only (without build):
-      ```shell
-      kubectl create namespace openfunction
-      helm install openfunction --set global.ShipwrightBuild.enabled=false --set global.TektonPipelines.enabled=false openfunction/openfunction -n openfunction
-      ```
-   
-   - Install Knative sync runtime only:
-      ```shell
-      kubectl create namespace openfunction
-      helm install openfunction --set global.Keda.enabled=false openfunction/openfunction -n openfunction
-      ```
-   
-   - Install OpenFunction async runtime only:
-      ```shell
-      kubectl create namespace openfunction
-      helm install openfunction --set global.Contour.enabled=false  --set global.KnativeServing.enabled=false openfunction/openfunction -n openfunction
-      ```
+    - Install all components:
+       ```shell
+       kubectl create namespace openfunction
+       helm install openfunction openfunction/openfunction -n openfunction
+       ```
+
+    - Install Serving only (without build):
+       ```shell
+       kubectl create namespace openfunction
+       helm install openfunction --set global.ShipwrightBuild.enabled=false --set global.TektonPipelines.enabled=false openfunction/openfunction -n openfunction
+       ```
+
+    - Install Knative sync runtime only:
+       ```shell
+       kubectl create namespace openfunction
+       helm install openfunction --set global.Keda.enabled=false openfunction/openfunction -n openfunction
+       ```
+
+    - Install OpenFunction async runtime only:
+       ```shell
+       kubectl create namespace openfunction
+       helm install openfunction --set global.Contour.enabled=false  --set global.KnativeServing.enabled=false openfunction/openfunction -n openfunction
+       ```
 
 ## Verify installation
 
@@ -90,6 +90,30 @@ Consult also the [Helm Documentation on CRDs](https://helm.sh/docs/chart_best_pr
 _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documentation._
 
 ### Upgrading an existing Release to a new version
+
+
+### From OpenFunction v0.8.x to OpenFunction v1.0.x
+
+#### Uninstall the Chart
+
+First, you'll need to uninstall the old `openfunction` release:
+```shell
+helm uninstall openfunction -n openfunction
+```
+
+#### Upgrade OpenFunction CRDs
+Then you'll need to upgrade the new OpenFunction CRDs
+
+```shell
+kubectl apply -f https://openfunction.sh1a.qingstor.com/crds/v1.0.0/openfunction.yaml
+```
+
+#### Install new chart
+
+```shell
+helm repo update
+helm install openfunction openfunction/openfunction -n openfunction
+```
 
 ### From OpenFunction v0.7.x to OpenFunction v0.8.x
 
@@ -163,7 +187,7 @@ helm install openfunction openfunction/openfunction -n openfunction
 | controllerManager.kubeRbacProxy.image.repository | string | `"openfunction/kube-rbac-proxy"` |  |
 | controllerManager.kubeRbacProxy.image.tag | string | `"v0.8.0"` |  |
 | controllerManager.openfunction.image.repository | string | `"openfunction/openfunction"` |  |
-| controllerManager.openfunction.image.tag | string | `"v0.8.1"` |  |
+| controllerManager.openfunction.image.tag | string | `"v1.0.0-rc.0"` |  |
 | controllerManager.openfunction.resources.limits.cpu | string | `"500m"` |  |
 | controllerManager.openfunction.resources.limits.memory | string | `"500Mi"` |  |
 | controllerManager.openfunction.resources.requests.cpu | string | `"100m"` |  |
@@ -198,6 +222,10 @@ helm install openfunction openfunction/openfunction -n openfunction
 | metricsService.ports[0].port | int | `8443` |  |
 | metricsService.ports[0].targetPort | string | `"https"` |  |
 | metricsService.type | string | `"ClusterIP"` |  |
+| revisionController.enable | bool | `false` |  |
+| revisionController.image.pullPolicy | string | `"IfNotPresent"` |  |
+| revisionController.image.repository | string | `"openfunction/revision-controller"` |  |
+| revisionController.image.tag | string | `"v1.0.0"` |  |
 | shipwright-build.shipwrightBuildController.shipwrightBuild.BUNDLE_CONTAINER_IMAGE.repository | string | `"openfunction/shipwright-bundle"` |  |
 | shipwright-build.shipwrightBuildController.shipwrightBuild.GIT_CONTAINER_IMAGE.repository | string | `"openfunction/shipwright-io-build-git"` |  |
 | shipwright-build.shipwrightBuildController.shipwrightBuild.MUTATE_IMAGE_CONTAINER_IMAGE.repository | string | `"openfunction/shipwright-mutate-image"` |  |

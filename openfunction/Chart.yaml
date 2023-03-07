@@ -3,7 +3,7 @@ name: openfunction
 description: A Helm chart for OpenFunction on Kubernetes
 # Specify the Kubernetes version range that we support.
 # We allow pre-release versions for cloud-specific Kubernetes versions such as  v1.21.5-gke.1302 or v1.18.9-eks-d1db3c
-kubeVersion: ">=v1.20.0-0"
+kubeVersion: ">=v1.21.0-0"
 # A chart can be either an 'application' or a 'library' chart.
 #
 # Application charts are a collection of templates that can be packaged into versioned archives
@@ -16,12 +16,12 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.4.0
+version: 0.5.0-rc.0
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
-appVersion: "0.8.1"
+appVersion: "1.0.0-rc.0"
 keywords:
   - faas
   - Serverless
@@ -38,15 +38,15 @@ dependencies:
     condition: global.Dapr.enabled
   - name: knative-serving
     version: 1.3.2
-    repository: "file://../knative-serving"
+    repository: "file://charts/knative-serving"
     condition: global.KnativeServing.enabled
   - name: tekton-pipelines
     version: 0.37.2
-    repository: "file://../tekton-pipelines"
+    repository: "file://charts/tekton-pipelines"
     condition: global.TektonPipelines.enabled
   - name: shipwright-build
     version: 0.10.0
-    repository: "file://../shipwright-build"
+    repository: "file://charts/shipwright-build"
     condition: global.ShipwrightBuild.enabled
   - name: keda
     version: 2.8.2
