@@ -3,7 +3,7 @@ entries:
   knative-serving:
   - apiVersion: v2
     appVersion: 1.3.2
-    created: "2023-03-06T16:59:04.645948+08:00"
+    created: "2023-03-08T14:10:28.3381376+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: 134c3b538f96c25862bf85e72e9bbf0fe12dc3497f1e7f47383ccb902a1abd56
     keywords:
@@ -22,7 +22,7 @@ entries:
     version: 1.3.2
   - apiVersion: v2
     appVersion: 1.0.1
-    created: "2023-03-06T16:59:04.6315776+08:00"
+    created: "2023-03-08T14:10:28.3251373+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: c3c6dd47616c498ffe87d94812c35a6423ef974fa65daddc22d196986e15284a
     keywords:
@@ -40,8 +40,53 @@ entries:
     version: 1.0.1
   openfunction:
   - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-03-08T14:10:28.6680262+08:00"
+    dependencies:
+    - condition: global.Dapr.enabled
+      name: dapr
+      repository: file://dapr
+      version: 1.8.3
+    - condition: global.KnativeServing.enabled
+      name: knative-serving
+      repository: file://knative-serving
+      version: 1.3.2
+    - condition: global.TektonPipelines.enabled
+      name: tekton-pipelines
+      repository: file://tekton-pipelines
+      version: 0.37.2
+    - condition: global.ShipwrightBuild.enabled
+      name: shipwright-build
+      repository: file://shipwright-build
+      version: 0.10.0
+    - condition: global.Keda.enabled
+      name: keda
+      repository: file://keda
+      version: 2.8.2
+    - condition: global.Contour.enabled
+      name: contour
+      repository: file://contour
+      version: 8.0.4
+    description: A Helm chart for OpenFunction on Kubernetes
+    digest: 1742127b059a9dd909de4226f3ed43fb75671cf9c66c9dda5afaf6d616678721
+    keywords:
+    - faas
+    - Serverless
+    - Kubernetes
+    kubeVersion: '>=v1.21.0-0'
+    maintainers:
+    - email: wangyifei@kubesphere.io
+      name: wangyifei
+    name: openfunction
+    sources:
+    - https://github.com/OpenFunction/OpenFunction
+    type: application
+    urls:
+    - https://openfunction.github.io/charts/openfunction-v1.0.0-v0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
     appVersion: 1.0.0-rc.0
-    created: "2023-03-06T16:59:04.8888907+08:00"
+    created: "2023-03-08T14:10:28.6483148+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -86,7 +131,7 @@ entries:
     version: 0.5.0-rc.0
   - apiVersion: v2
     appVersion: 0.8.1
-    created: "2023-03-06T16:59:04.8701826+08:00"
+    created: "2023-03-08T14:10:28.618198+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -131,7 +176,7 @@ entries:
     version: 0.4.0
   - apiVersion: v2
     appVersion: 0.8.1-rc.0
-    created: "2023-03-06T16:59:04.8433063+08:00"
+    created: "2023-03-08T14:10:28.5937953+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -176,7 +221,7 @@ entries:
     version: 0.4.0-rc.0
   - apiVersion: v2
     appVersion: 0.8.0
-    created: "2023-03-06T16:59:04.8171546+08:00"
+    created: "2023-03-08T14:10:28.5608319+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -221,7 +266,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: 0.8.0
-    created: "2023-03-06T16:59:04.7608209+08:00"
+    created: "2023-03-08T14:10:28.467173+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -266,7 +311,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: 0.8.0-rc.0
-    created: "2023-03-06T16:59:04.7277441+08:00"
+    created: "2023-03-08T14:10:28.4256721+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -311,7 +356,7 @@ entries:
     version: 0.3.0-rc.0
   - apiVersion: v2
     appVersion: 0.7.0
-    created: "2023-03-06T16:59:04.6969625+08:00"
+    created: "2023-03-08T14:10:28.3980843+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -356,7 +401,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2023-03-06T16:59:04.6671955+08:00"
+    created: "2023-03-08T14:10:28.3665534+08:00"
     dependencies:
     - condition: Dapr.enabled
       name: dapr
@@ -402,7 +447,7 @@ entries:
   shipwright-build:
   - apiVersion: v2
     appVersion: 0.10.0
-    created: "2023-03-06T16:59:04.9041768+08:00"
+    created: "2023-03-08T14:10:28.6818426+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: 06820ce8fe0088b3f95086ce38c5aff3069b691d2d5f1210e5bf77e9632a8611
     keywords:
@@ -423,7 +468,7 @@ entries:
     version: 0.10.0
   - apiVersion: v2
     appVersion: 0.6.1
-    created: "2023-03-06T16:59:04.9098152+08:00"
+    created: "2023-03-08T14:10:28.6951416+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: 366ca24ad2651910695ac50e165be4fa7c8c635ec2aec5f53a6baca17f3efed0
     keywords:
@@ -444,7 +489,7 @@ entries:
   tekton-pipelines:
   - apiVersion: v2
     appVersion: 0.37.2
-    created: "2023-03-06T16:59:04.9278638+08:00"
+    created: "2023-03-08T14:10:28.716223+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
     digest: 90fe5c147a410aa1c26812435704cbcf1891ce2446a8e5f8a3ff62449f736360
     keywords:
@@ -465,7 +510,7 @@ entries:
     version: 0.37.2
   - apiVersion: v2
     appVersion: 0.30.0
-    created: "2023-03-06T16:59:04.9180886+08:00"
+    created: "2023-03-08T14:10:28.7096407+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
     digest: 4939ec89841370813aa5c00cea5db82733470fb165326d2b75c3f9324d170bac
     keywords:
@@ -483,4 +528,4 @@ entries:
     urls:
     - https://openfunction.github.io/charts/tekton-pipelines-0.30.0.tgz
     version: 0.30.0
-generated: "2023-03-06T16:59:04.6098217+08:00"
+generated: "2023-03-08T14:10:28.3079252+08:00"
