@@ -27,7 +27,7 @@ spec:
       emptyDir: {}
   buildSteps:
     - name: prepare
-      image: golang:$(params.go-version)
+      image: $(params.BUILDER_IMAGE)
       imagePullPolicy: Always
       securityContext:
         runAsUser: 0
@@ -110,7 +110,7 @@ spec:
           # Determine the ko version
           KO_VERSION="${PARAM_KO_VERSION}"
           if [ "${KO_VERSION}" == "latest" ]; then
-            KO_VERSION=$(curl --silent "https://api.github.com/repos/google/ko/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+            KO_VERSION=$(curl --silent -L "https://api.github.com/repos/google/ko/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
           fi
 
           # Create one variable with v-suffix and one without as we need both for the download URL

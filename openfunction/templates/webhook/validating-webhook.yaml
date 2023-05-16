@@ -12,14 +12,14 @@ webhooks:
     service:
       name: '{{ include "openfunction.fullname" . }}-webhook-service'
       namespace: '{{ .Release.Namespace }}'
-      path: /validate-core-openfunction-io-v1beta1-function
+      path: /validate-core-openfunction-io-v1beta2-function
   failurePolicy: Fail
   name: vfunctions.of.io
   rules:
   - apiGroups:
     - core.openfunction.io
     apiVersions:
-    - v1beta1
+    - v1beta2
     operations:
     - CREATE
     - UPDATE
