@@ -9,7 +9,7 @@ spec:
       emptyDir: {}
   buildSteps:
     - name: build-and-push
-      image: gcr.io/kaniko-project/executor:v1.8.1
+      image: $(params.BUILDER_IMAGE)
       workingDir: $(params.shp-source-root)
       securityContext:
         runAsUser: 0
