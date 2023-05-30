@@ -43,7 +43,7 @@ spec:
       done
     command:
     - /usr/local/bin/bash
-    image: docker.io/library/bash:5.1.4@sha256:b208215a4655538be652b2769d82e576bc4d0a2bb132144c060efc5be8c3f5d6
+    image: $(params.BASH_IMAGE)
     name: prepare
     securityContext:
       privileged: true
@@ -90,7 +90,7 @@ spec:
       cat /layers/report.toml | grep "digest" | cut -d'"' -f2 | cut -d'"' -f2 | tr -d '\n' | tee $(results.shp-image-digest.path)
     command:
     - /bin/sh
-    image: docker.io/library/bash:5.1.4@sha256:b208215a4655538be652b2769d82e576bc4d0a2bb132144c060efc5be8c3f5d6
+    image: $(params.BASH_IMAGE)
     name: results
     volumeMounts:
     - mountPath: /layers
@@ -122,4 +122,7 @@ spec:
     description: Environment variables to set during _build-time_. The formate is
       `key1=value1,key2=value2`.
     name: ENV_VARS
+  - default: "docker.io/library/bash:5.1.4"
+    description: The bash image.
+    name: BASH_IMAGE
 {{- end }}

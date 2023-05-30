@@ -9,14 +9,14 @@ data:
     knative-serving.namespace: "knative-serving"
     knative-serving.config-features.name: "config-features"
     # Configuration of the order of the plugins
-    plugins: |
+    hooks: |
       pre:
       - plugin1
       - plugin2
       post:
       - plugin2
       - plugin1
-    plugins.tracing: |
+    tracing: |
       # Switch for tracing, default to false
       enabled: false
       # Provider name can be set to "skywalking", "opentelemetry"
