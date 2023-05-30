@@ -18,7 +18,7 @@ config:
   eventsourceHandlerImage: openfunction/eventsource-handler:v4
   triggerHandlerImage: openfunction/trigger-handler:v4
   daprProxyImage: openfunction/dapr-proxy:v0.1.1
-  pluginsTracing: |
+  tracing: |
     enabled: false
     provider:
       name: "skywalking"
@@ -39,7 +39,7 @@ controllerManager:
   openfunction:
     image:
       repository: openfunction/openfunction
-      tag: v1.0.0
+      tag: v1.1.0
     resources:
       limits:
         cpu: 500m
