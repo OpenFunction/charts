@@ -39,7 +39,7 @@ data:
         value: "base64(string key):base64(string value),base64(string key2):base64(string value2)"
   knative-serving.config-features.name: {{ .Values.config.knativeServingConfigFeaturesName | quote }}
   knative-serving.namespace: {{ .Values.config.knativeServingNamespace | quote }}
-  plugins.tracing: {{ .Values.config.pluginsTracing | quote }}
+  tracing: {{ .Values.config.tracing | quote }}
   openfunction.eventsource-handler.image: {{ .Values.config.eventsourceHandlerImage | quote }}
   openfunction.trigger-handler.image: {{ .Values.config.triggerHandlerImage | quote }}
   openfunction.dapr-proxy.image: {{ .Values.config.daprProxyImage | quote }}
