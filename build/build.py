@@ -128,5 +128,5 @@ class Build(object):
 
 
 if __name__ == '__main__':
-    builder = Build(version="0.6.0", region_cn=True)
+    builder = Build(version="0.6.1", region_cn=True)
     builder.run()
