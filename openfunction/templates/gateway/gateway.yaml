@@ -10,6 +10,7 @@ spec:
   gatewayClassName: contour
   listeners:
     - name: http
+      hostname: '*.example.com'
       protocol: HTTP
       port: 80
       allowedRoutes:
