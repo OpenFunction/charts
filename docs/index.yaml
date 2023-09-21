@@ -3,7 +3,7 @@ entries:
   knative-serving:
   - apiVersion: v2
     appVersion: 1.3.2
-    created: "2023-09-20T15:57:04.723636+08:00"
+    created: "2023-09-21T11:00:56.039095+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: 134c3b538f96c25862bf85e72e9bbf0fe12dc3497f1e7f47383ccb902a1abd56
     keywords:
@@ -22,7 +22,7 @@ entries:
     version: 1.3.2
   - apiVersion: v2
     appVersion: 1.0.1
-    created: "2023-09-20T15:57:04.722074+08:00"
+    created: "2023-09-21T11:00:56.037699+08:00"
     description: A Helm chart for Knative Serving on Kubernetes
     digest: c3c6dd47616c498ffe87d94812c35a6423ef974fa65daddc22d196986e15284a
     keywords:
@@ -41,7 +41,7 @@ entries:
   openfunction:
   - apiVersion: v2
     appVersion: 1.2.0-rc.0
-    created: "2023-09-20T15:57:04.868684+08:00"
+    created: "2023-09-21T11:00:56.179197+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -68,7 +68,7 @@ entries:
       repository: file://contour
       version: 10.2.2
     description: A Helm chart for OpenFunction on Kubernetes
-    digest: ab0b0b44ffe4a144afc7b2a3f0455437b1b74d530abc7c6a5801fb08dab8cab4
+    digest: 71ddfd1a9d5f84744bea5548902805f3991ff6d499375132b25b12ee87b54458
     keywords:
     - faas
     - Serverless
@@ -86,7 +86,7 @@ entries:
     version: 0.7.0-rc.0
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2023-09-20T15:57:04.853949+08:00"
+    created: "2023-09-21T11:00:56.164572+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -131,7 +131,7 @@ entries:
     version: 0.6.1
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2023-09-20T15:57:04.841853+08:00"
+    created: "2023-09-21T11:00:56.153049+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -176,7 +176,7 @@ entries:
     version: 0.6.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-09-20T15:57:04.830276+08:00"
+    created: "2023-09-21T11:00:56.141518+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -221,7 +221,7 @@ entries:
     version: 0.5.0
   - apiVersion: v2
     appVersion: 1.0.0-rc.0
-    created: "2023-09-20T15:57:04.818098+08:00"
+    created: "2023-09-21T11:00:56.129738+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -266,7 +266,7 @@ entries:
     version: 0.5.0-rc.0
   - apiVersion: v2
     appVersion: 0.8.1
-    created: "2023-09-20T15:57:04.806779+08:00"
+    created: "2023-09-21T11:00:56.117619+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -311,7 +311,7 @@ entries:
     version: 0.4.0
   - apiVersion: v2
     appVersion: 0.8.1-rc.0
-    created: "2023-09-20T15:57:04.795313+08:00"
+    created: "2023-09-21T11:00:56.106106+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -356,7 +356,7 @@ entries:
     version: 0.4.0-rc.0
   - apiVersion: v2
     appVersion: 0.8.0
-    created: "2023-09-20T15:57:04.782601+08:00"
+    created: "2023-09-21T11:00:56.094241+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -401,7 +401,7 @@ entries:
     version: 0.3.1
   - apiVersion: v2
     appVersion: 0.8.0
-    created: "2023-09-20T15:57:04.770451+08:00"
+    created: "2023-09-21T11:00:56.083188+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -446,7 +446,7 @@ entries:
     version: 0.3.0
   - apiVersion: v2
     appVersion: 0.8.0-rc.0
-    created: "2023-09-20T15:57:04.759312+08:00"
+    created: "2023-09-21T11:00:56.070631+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -491,7 +491,7 @@ entries:
     version: 0.3.0-rc.0
   - apiVersion: v2
     appVersion: 0.7.0
-    created: "2023-09-20T15:57:04.747478+08:00"
+    created: "2023-09-21T11:00:56.059177+08:00"
     dependencies:
     - condition: global.Dapr.enabled
       name: dapr
@@ -536,7 +536,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.6.0
-    created: "2023-09-20T15:57:04.734391+08:00"
+    created: "2023-09-21T11:00:56.04769+08:00"
     dependencies:
     - condition: Dapr.enabled
       name: dapr
@@ -582,7 +582,7 @@ entries:
   shipwright-build:
   - apiVersion: v2
     appVersion: 0.10.0
-    created: "2023-09-20T15:57:04.870856+08:00"
+    created: "2023-09-21T11:00:56.181518+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: 06820ce8fe0088b3f95086ce38c5aff3069b691d2d5f1210e5bf77e9632a8611
     keywords:
@@ -603,7 +603,7 @@ entries:
     version: 0.10.0
   - apiVersion: v2
     appVersion: 0.6.1
-    created: "2023-09-20T15:57:04.871606+08:00"
+    created: "2023-09-21T11:00:56.182448+08:00"
     description: A Helm chart for Shipwright Build on Kubernetes
     digest: 366ca24ad2651910695ac50e165be4fa7c8c635ec2aec5f53a6baca17f3efed0
     keywords:
@@ -624,7 +624,7 @@ entries:
   tekton-pipelines:
   - apiVersion: v2
     appVersion: 0.37.2
-    created: "2023-09-20T15:57:04.8727+08:00"
+    created: "2023-09-21T11:00:56.184158+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
     digest: 90fe5c147a410aa1c26812435704cbcf1891ce2446a8e5f8a3ff62449f736360
     keywords:
@@ -645,7 +645,7 @@ entries:
     version: 0.37.2
   - apiVersion: v2
     appVersion: 0.30.0
-    created: "2023-09-20T15:57:04.872155+08:00"
+    created: "2023-09-21T11:00:56.183118+08:00"
     description: A Helm chart for Tekton Pipelines on Kubernetes
     digest: 4939ec89841370813aa5c00cea5db82733470fb165326d2b75c3f9324d170bac
     keywords:
@@ -663,4 +663,4 @@ entries:
     urls:
     - https://openfunction.github.io/charts/tekton-pipelines-0.30.0.tgz
     version: 0.30.0
-generated: "2023-09-20T15:57:04.717174+08:00"
+generated: "2023-09-21T11:00:56.033995+08:00"

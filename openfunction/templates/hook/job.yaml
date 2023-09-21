@@ -20,6 +20,7 @@ spec:
         - delete
         - gateways.networking.openfunction.io
         - openfunction
+        - --wait=false
         - --ignore-not-found=true
       restartPolicy: Never
       serviceAccountName: gateway-edit
