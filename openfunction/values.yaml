@@ -77,10 +77,24 @@ knative-serving:
     activator:
       image:
         repository: openfunction/knative.dev-serving-cmd-activator
+      resources:
+        limits:
+          cpu: "1"
+          memory: 600Mi
+        requests:
+          cpu: 300m
+          memory: 60Mi
   autoscaler:
     autoscaler:
       image:
         repository: openfunction/knative.dev-serving-cmd-autoscaler
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1000Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
   configDeployment:
     queueSidecarImage:
       repository: openfunction/knative.dev-serving-cmd-queue
@@ -88,18 +102,46 @@ knative-serving:
     controller:
       image:
         repository: openfunction/knative.dev-serving-cmd-controller
+      resources:
+        limits:
+          cpu: "1"
+          memory: 1000Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
   domainMapping:
     domainMapping:
       image:
         repository: openfunction/knative.dev-serving-cmd-domain-mapping
+      resources:
+        limits:
+          cpu: 300m
+          memory: 400Mi
+        requests:
+          cpu: 30m
+          memory: 40Mi
   domainmappingWebhook:
     domainmappingWebhook:
       image:
         repository: openfunction/knative.dev-serving-cmd-domain-mapping-webhook
+      resources:
+        limits:
+          cpu: 500m
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
   netContourController:
     controller:
       image:
         repository: openfunction/knative.dev-net-contour-cmd-controller
+      resources:
+        limits:
+          cpu: 400m
+          memory: 400Mi
+        requests:
+          cpu: 40m
+          memory: 40Mi
   defaultDomain:
     job:
       image:
@@ -108,6 +150,13 @@ knative-serving:
     webhook:
       image:
         repository: openfunction/knative.dev-serving-cmd-webhook
+      resources:
+        limits:
+          cpu: 500m
+          memory: 500Mi
+        requests:
+          cpu: 100m
+          memory: 100Mi
 shipwright-build:
   shipwrightBuildController:
     shipwrightBuild:
@@ -168,6 +217,31 @@ keda:
       repository: openfunction/keda-admission-webhooks
       # Allows people to override tag if they don't want to use the app version
       tag: 2.11.2
+  resources:
+    # -- Manage [resource request & limits] of KEDA operator pod
+    operator:
+      limits:
+        cpu: 1
+        memory: 1000Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    # -- Manage [resource request & limits] of KEDA metrics apiserver pod
+    metricServer:
+      limits:
+        cpu: 1
+        memory: 1000Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    # -- Manage [resource request & limits] of KEDA admission webhooks pod
+    webhooks:
+      limits:
+        cpu: 50m
+        memory: 100Mi
+      requests:
+        cpu: 10m
+        memory: 10Mi
 contour:
   fullnameOverride: "contour"
   namespaceOverride: "projectcontour"
