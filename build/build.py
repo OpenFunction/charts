@@ -10,6 +10,7 @@ class Build(object):
     ns_mapping = {
         "dapr": "dapr-system",
         "keda": "keda",
+        "keda-add-ons-http": "keda",
         "contour": "projectcontour",
         "knative-serving": "knative-serving",
         "tekton-pipelines": "tekton-pipelines",
@@ -128,5 +129,5 @@ class Build(object):
 
 
 if __name__ == '__main__':
-    builder = Build(version="0.7.0-rc.0", region_cn=True)
+    builder = Build(version="0.7.0", region_cn=True)
     builder.run()

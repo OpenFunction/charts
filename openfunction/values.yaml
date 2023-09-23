@@ -39,7 +39,7 @@ controllerManager:
   openfunction:
     image:
       repository: openfunction/openfunction
-      tag: v1.1.1
+      tag: v1.2.0
     resources:
       limits:
         cpu: 500m
