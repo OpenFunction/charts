@@ -157,6 +157,17 @@ knative-serving:
         requests:
           cpu: 100m
           memory: 100Mi
+  hpa:
+    image:
+      repository: openfunction/knative.dev-serving-cmd-autoscaler-hpa
+      tag: v1.3.2
+    resources:
+      requests:
+        cpu: 30m
+        memory: 40Mi
+      limits:
+        cpu: 300m
+        memory: 400Mi
 shipwright-build:
   shipwrightBuildController:
     shipwrightBuild:

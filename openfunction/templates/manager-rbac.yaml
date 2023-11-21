@@ -3,6 +3,9 @@ kind: ClusterRole
 metadata:
   name: {{ include "openfunction.fullname" . }}-manager-role
   labels:
+    rbac.authorization.k8s.io/aggregate-to-admin: "true"
+    rbac.authorization.k8s.io/aggregate-to-edit: "true"
+    rbac.authorization.k8s.io/aggregate-to-view: "true"
   {{- include "openfunction.labels" . | nindent 4 }}
 rules:
   - apiGroups:
